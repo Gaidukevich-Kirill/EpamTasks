@@ -12,3 +12,17 @@ E:\prg\ConsoleApp2\ConsoleApp2\bin\Debug\netcoreapp3.1\ConsoleApp2.pdb
 E:\prg\ConsoleApp2\ConsoleApp2\obj\Debug\netcoreapp3.1\ConsoleApp2.dll
 E:\prg\ConsoleApp2\ConsoleApp2\obj\Debug\netcoreapp3.1\ConsoleApp2.pdb
 E:\prg\ConsoleApp2\ConsoleApp2\obj\Debug\netcoreapp3.1\ConsoleApp2.genruntimeconfig.cache
+E:\prg\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\ConsoleApp2.exe
+E:\prg\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\ConsoleApp2.deps.json
+E:\prg\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\ConsoleApp2.runtimeconfig.json
+E:\prg\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\ConsoleApp2.runtimeconfig.dev.json
+E:\prg\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\ConsoleApp2.dll
+E:\prg\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\ConsoleApp2.pdb
+E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\ConsoleApp2.csproj.AssemblyReference.cache
+E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\ConsoleApp2.GeneratedMSBuildEditorConfig.editorconfig
+E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\ConsoleApp2.AssemblyInfoInputs.cache
+E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\ConsoleApp2.AssemblyInfo.cs
+E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\ConsoleApp2.csproj.CoreCompileInputs.cache
+E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\ConsoleApp2.dll
+E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\ConsoleApp2.pdb
+E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\ConsoleApp2.genruntimeconfig.cache

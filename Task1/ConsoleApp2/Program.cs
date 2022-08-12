@@ -7,8 +7,6 @@ namespace ConsoleApp2
 {
     public class Program
     {
-        //private static int index = 0;
-
         static void Main(string[] args)
         {
             WhiteBread WhiteBread = new WhiteBread();
@@ -19,113 +17,52 @@ namespace ConsoleApp2
             Bread.ProductID = 2;
             Bread.ProductName = "Bread";
 
-            Baguette Baguette = new Baguette(); 
+            Baguette Baguette = new Baguette();
             Baguette.ProductID = 3;
             Baguette.ProductName = "Baget";
 
-            Console.WriteLine($"Calories {WhiteBread.ProductName}:{WhiteBread.ProductCalories}");
-            Console.WriteLine($"Price {WhiteBread.ProductName}:{Math.Round(WhiteBread.ProductPrice, 2)} rub");
+            Console.WriteLine($"Calories/Price {WhiteBread.ProductName}:{WhiteBread.ProductCalories}/{Math.Round(WhiteBread.ProductPrice, 2)} rub");
+            Console.WriteLine($"Calories/Price {Bread.ProductName}:{Bread.ProductCalories}/{Math.Round(Bread.ProductPrice, 2)} rub");
+            Console.WriteLine($"Calories/Price {Baguette.ProductName}:{Baguette.ProductCalories}/{Math.Round(Baguette.ProductPrice, 2)} rub");
+            
+            List<BakeryProducts> MenuProductsBase = new List<BakeryProducts>();
+            MenuProductsBase.Add(WhiteBread);
+            MenuProductsBase.Add(Bread);
+            MenuProductsBase.Add(Baguette);
 
-            Console.WriteLine($"Calories {Bread.ProductName}:{Bread.ProductCalories}");
-            Console.WriteLine($"Price {Bread.ProductName}:{Math.Round(Bread.ProductPrice, 2)} rub");
+            foreach(var component in MenuProductsBase)
+            {
+                Console.WriteLine(component.ProductName);
+            }
 
-            Console.WriteLine($"Calories {Baguette.ProductName}:{Baguette.ProductCalories}");
-            Console.WriteLine($"Price {Baguette.ProductName}:{Math.Round(Baguette.ProductPrice, 2)} rub");
+            Console.WriteLine();
+            Console.WriteLine("Sort by price");
+            
+            List<BakeryProducts> MenuProdustsSortByPrice = new List<BakeryProducts>(MenuProductsBase); //copy list
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+            
 
 
+            foreach (var component in MenuProdustsSortByPrice)
+            {
+                Console.WriteLine(component.ProductName);
+            }
 
+            
+            
+            /*for(int i = 0; i < MenuProductsBase.Count; i++)
+            {
+                
+            }*/
 
+            Console.WriteLine("Sort by calories");
 
-
-
-
-
-            /*    List<string> menuItems = new List<string>(){
-                "one",
-                "two",
-                "Exit"
-                };
-
-                Console.CursorVisible = false;
-
-                while (true)
-                {
-                    string selectedMenuItem = drawMenu(menuItems);
-                    if (selectedMenuItem == "one")
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Hello");
-                        Console.Read();
-                        Console.Clear();
-                    }
-                    else if (selectedMenuItem == "Exit")
-                    {
-                        Environment.Exit(0);
-                    }
-                }
-
-                static string drawMenu(List<string> items)
-                {
-                    for (int i = 0; i < items.Count; i++)
-                    {
-                        if (i == index)
-                        {
-                            Console.BackgroundColor = ConsoleColor.Gray;
-                            Console.ForegroundColor = ConsoleColor.Black;
-
-                            Console.WriteLine(items[i]);
-                        }
-                        else
-                        {
-                            Console.WriteLine(items[i]);
-                        }
-                        Console.ResetColor();
-                    }
-
-                    ConsoleKeyInfo ckey = Console.ReadKey();
-
-                    if (ckey.Key == ConsoleKey.DownArrow)
-                    {
-                        if (index == items.Count - 1)
-                        {
-                            //index = 0;
-                        }
-                        else { index++; }
-                    }
-                    else if (ckey.Key == ConsoleKey.UpArrow)
-                    {
-                        if (index <= 0)
-                        {
-                            //index = menuItem.Count - 1;
-                        }
-                        else { index--; }
-                    }
-                    else if (ckey.Key == ConsoleKey.Enter)
-                    {
-                        return items[index];
-                    }
-                    else
-                    {
-                        return "";
-                    }
-
-                    Console.Clear();
-                    return "";
-                }*/
         }
+
+        
+
+
+
+
     }
 }
