@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Text;
+using ConsoleApp2.Products;
+using ConsoleApp2.Components;
+
+namespace ConsoleApp2.Comparers
+{
+    public enum TypeOfSort
+    {
+        Ascending = 1,
+        Descending = -1
+    }
+
+    public class BakeryProductPriceComparer : IComparer<BakeryProducts>
+    {
+        private readonly TypeOfSort _type;
+
+        public BakeryProductPriceComparer(TypeOfSort type)
+        {
+            _type = type;
+        }
+
+        public int Compare(BakeryProducts left, BakeryProducts right)
+        {
+            switch (_type)
+            {
+                case TypeOfSort.Ascending:
+                    return left.ProductPrice.CompareTo(right.ProductPrice);
+                case TypeOfSort.Descending:
+                    return -(left.ProductPrice.CompareTo(right.ProductPrice));
+            }
+
+            throw new Exception();
+        }
+
+
+    }
+}

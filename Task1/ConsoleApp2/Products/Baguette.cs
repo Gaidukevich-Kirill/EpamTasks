@@ -15,7 +15,7 @@ namespace ConsoleApp2.Products
             Compounds.Add(new Egg(15, 35));
         }
 
-        public double ProductPrice
+        public override int ProductPrice
         {
             get
             {
@@ -24,7 +24,7 @@ namespace ConsoleApp2.Products
                 {
                     productPrice += compound.Cost;
                 }
-                double productPriceMargin = productPrice * 1.26; //margin 26%
+                int productPriceMargin = (int)(productPrice * 1.26); //margin 26%
 
                 return productPriceMargin;
             }
