@@ -6,7 +6,7 @@ namespace ConsoleApp2.Components
 {
     public class Salt:Compound
     {
-        public Salt(int cost, int calories) : base(cost, calories)
+        public Salt(int cost, int calories, int volume) : base(cost, calories, volume)
         {
 
         }

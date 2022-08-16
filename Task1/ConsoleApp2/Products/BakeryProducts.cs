@@ -8,7 +8,7 @@ namespace ConsoleApp2.Products
 {
     public abstract class BakeryProducts
     {
-        public int ProductID { get; set; }
+        public int ProductId { get; set; }
         public string ProductName { get; set; }
 
         public List<Compound> Compounds { get; } = new List<Compound>();

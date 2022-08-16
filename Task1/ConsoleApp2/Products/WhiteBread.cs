@@ -9,7 +9,7 @@ namespace ConsoleApp2.Products
     {
         public WhiteBread() : base()
         {
-            Compounds.Add(new Egg(50, 50));
+
         }
 
         public override int ProductPrice

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ConsoleApp2.Components;
 using ConsoleApp2.Products;
 using ConsoleApp2.Comparers;
+using ConsoleApp2.Services;
 
 namespace ConsoleApp2
 {
@@ -10,80 +11,105 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            WhiteBread WhiteBread = new WhiteBread();
-            WhiteBread.ProductID = 1;
-            WhiteBread.ProductName = "White Bread";
+            Bread bread = new Bread
+            {
+                ProductId = 1,
+                ProductName = "Bread",
+                Compounds =
+                {
+                    new Flour(50, 100, 5),
+                    new Water(0, 0, 3),
+                    new Salt(10, 10, 1),
+                }
+            };
 
-            Bread Bread = new Bread();
-            Bread.ProductID = 2;
-            Bread.ProductName = "Bread";
-            
-            Baguette Baguette = new Baguette();
-            Baguette.ProductID = 3;
-            Baguette.ProductName = "Baget";
+            WhiteBread whiteBread = new WhiteBread
+            {
+                ProductId = 2,
+                ProductName = "White Bread",
+                Compounds =
+                {
+                    new Flour(40, 40, 4),
+                    new Water(0, 0, 2),
+                    new Salt(10, 10, 1),
+                    new Sugar(20, 20, 2),
+                    new Egg(20, 20, 2),
+                }
+            };
 
-            List<BakeryProducts> MenuProductsBase = new List<BakeryProducts>();
-            MenuProductsBase.Add(WhiteBread);
-            MenuProductsBase.Add(Bread);
-            MenuProductsBase.Add(Baguette);
+            Baguette baguette = new Baguette
+            {
+                ProductId = 3,
+                ProductName = "Baguette",
+                Compounds =
+                {
+                    new Flour(30, 30, 3),
+                    new Water(0, 0, 1),
+                    new Sugar(30, 30, 3),
+                    new Salt(10, 10, 1),
+                    new Egg(30, 30, 3)
+                }
+            };
 
-            foreach (var item in MenuProductsBase)
+            List<BakeryProducts> menuProductsBase = new List<BakeryProducts>
+            {
+                bread,
+                whiteBread,
+                baguette
+            };
+
+            Console.WriteLine("Default list");
+            foreach (var item in menuProductsBase)
             {
                 Console.WriteLine(
-                    $"Calories/Price {item.ProductName}:{item.ProductCalories}/{item.ProductPrice, 2} rub");
-            }
-
-            Console.WriteLine();
-            Console.WriteLine("Default list");
-            foreach (var component in MenuProductsBase)
-            {
-                Console.WriteLine(component.ProductName);
+                    $"Price/Calories {item.ProductName}:{item.ProductPrice} rub/{item.ProductCalories} cal");
             }
 
             Console.WriteLine();
             Console.WriteLine("Sort by price");
-            List<BakeryProducts> MenuProdustsSortByPrice = new List<BakeryProducts>(MenuProductsBase); //copy list
-            MenuProdustsSortByPrice.Sort(new BakeryProductPriceComparer(TypeOfSort.Ascending));
-            foreach (var component in MenuProdustsSortByPrice)
+            List<BakeryProducts> menuProdustsSortByPrice = new List<BakeryProducts>(menuProductsBase); //copy list
+            
+            menuProdustsSortByPrice.Sort(new BakeryProductPriceComparer(TypeOfSort.Ascending));
+            foreach (var item in menuProdustsSortByPrice)
             {
-                Console.WriteLine(component.ProductName);
+                Console.WriteLine(
+                    $"Price/Calories {item.ProductName}:{item.ProductPrice} rub/{item.ProductCalories} cal");
             }
 
             Console.WriteLine();
             Console.WriteLine("Sort by calories");
-            List<BakeryProducts> MenuProdustsSortByCalories = new List<BakeryProducts>(MenuProductsBase); //copy list
-            MenuProdustsSortByCalories.Sort(new BakeryProductCaloriesComparer(TypeOfSort.Ascending));
-            foreach (var component in MenuProdustsSortByCalories)
+            List<BakeryProducts> menuProdustsSortByCalories = new List<BakeryProducts>(menuProductsBase); //copy list
+            
+            menuProdustsSortByCalories.Sort(new BakeryProductCaloriesComparer(TypeOfSort.Ascending));
+            foreach (var item in menuProdustsSortByCalories)
             {
-                Console.WriteLine(component.ProductName);
+                Console.WriteLine(
+                    $"Price/Calories {item.ProductName}:{item.ProductPrice} rub/{item.ProductCalories} cal");
             }
+            
+            Console.WriteLine();
+            Console.WriteLine("Search product by Price & Calories 99/90");
+            var searchByCaloriesAndPriceList = BakerService.SearchByCaloriesAndPrice(menuProductsBase, 99, 90);
+            foreach (var item in searchByCaloriesAndPriceList)
+            {
+                Console.WriteLine(
+                    $"Price/Calories {item.ProductName}:{item.ProductPrice} rub/{item.ProductCalories} cal");
+            }
+
+
 
             Console.WriteLine();
-            Console.WriteLine("Search product by Calories & Price 116/150");
-            
-            List<BakeryProducts> SearchByCaloriesAndPriceList = new List<BakeryProducts>();
-            SearchByCaloriesAndPriceMethod(116, 150);
-
-            foreach (var product in SearchByCaloriesAndPriceList)
+            Console.WriteLine("Search product by number of components");
+            var searchByVolumeOfComponentsList = BakerService.SearchByVolumeOfComponents(menuProductsBase, 4); //4 components
+            foreach (var item in searchByVolumeOfComponentsList)
             {
-                Console.WriteLine(product.ProductName);
+                Console.WriteLine(
+                    $"Price/Calories {item.ProductName}:{item.ProductPrice} rub/{item.ProductCalories} cal");
             }
+
             
 
-
-
-
-
-            void SearchByCaloriesAndPriceMethod(int calories, int price)
-            {
-                foreach (var product in MenuProductsBase)
-                {
-                    if (product.ProductCalories == calories && product.ProductPrice == price)
-                    {
-                        SearchByCaloriesAndPriceList.Add(product);
-                    }
-                }
-            }
+            
         }
 
 

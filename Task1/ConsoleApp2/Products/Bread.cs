@@ -9,8 +9,7 @@ namespace ConsoleApp2.Products
     {
         public Bread()
         {
-            Compounds.Add(new Sugar(5, 50));
-            Compounds.Add(new Flour(50, 50));
+
         }
 
         public override int ProductPrice
