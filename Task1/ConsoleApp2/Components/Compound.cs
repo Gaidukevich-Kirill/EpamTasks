@@ -9,13 +9,11 @@ namespace ConsoleApp2.Components
     {
         public int Cost { get; set; }
         public int Calories { get; set; }
-        public int Volume { get; set; }
 
-        public Compound(int cost, int calories, int volume)
+        public Compound(int cost, int calories)
         {
             Cost = cost;
             Calories = calories;
-            Volume = volume;
         }
 
     }

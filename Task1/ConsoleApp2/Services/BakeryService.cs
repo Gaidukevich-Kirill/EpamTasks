@@ -6,7 +6,7 @@ using ConsoleApp2.Products;
 
 namespace ConsoleApp2.Services
 {
-    public static class BakerService
+    public static class BakeryService
     {
         public static List<BakeryProducts> SearchByCaloriesAndPrice(List<BakeryProducts> menuProductsBase, int price,
             int calories)

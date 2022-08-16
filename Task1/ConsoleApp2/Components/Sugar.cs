@@ -7,7 +7,7 @@ namespace ConsoleApp2.Components
 {
     public class Sugar:Compound
     {
-        public Sugar(int cost, int calories, int volume) : base(cost, calories, volume)
+        public Sugar(int cost, int calories) : base(cost, calories)
         {
 
         }
