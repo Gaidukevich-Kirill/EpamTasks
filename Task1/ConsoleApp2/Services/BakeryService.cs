@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ConsoleApp2.Components;
-using ConsoleApp2.Products;
+using Task1.Components;
+using Task1.Products;
 
-namespace ConsoleApp2.Services
+namespace Task1.Services
 {
     public static class BakeryService
     {
-        public static List<BakeryProducts> SearchByCaloriesAndPrice(List<BakeryProducts> menuProductsBase, int price,
+        public static List<BakeryProducts> SearchByCaloriesAndPrice(
+            List<BakeryProducts> menuProductsBase, 
+            int price,
             int calories)
         {
-            List<BakeryProducts> result = new List<BakeryProducts>();
+            var result = new List<BakeryProducts>();
 
             foreach (var item in menuProductsBase)
             {
@@ -26,7 +28,7 @@ namespace ConsoleApp2.Services
 
         public static List<BakeryProducts> SearchByVolumeOfComponents(List<BakeryProducts> menuProductsBase, int volume)
         {
-            List<BakeryProducts> result = new List<BakeryProducts>();
+            var result = new List<BakeryProducts>();
 
             foreach (var item in menuProductsBase)
             {

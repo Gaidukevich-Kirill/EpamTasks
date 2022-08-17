@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using ConsoleApp2.Components;
-using ConsoleApp2.Products;
 using ConsoleApp2.Comparers;
-using ConsoleApp2.Services;
+using Task1.Components;
+using Task1.Products;
+using Task1.Comparers;
+using Task1.Services;
 
-namespace ConsoleApp2
+namespace Task1
 {
     public class Program
     {
@@ -51,7 +52,7 @@ namespace ConsoleApp2
                 }
             };
 
-            List<BakeryProducts> menuProductsBase = new List<BakeryProducts>
+            var menuProductsBase = new List<BakeryProducts>
             {
                 bread,
                 whiteBread,
@@ -67,9 +68,9 @@ namespace ConsoleApp2
 
             Console.WriteLine();
             Console.WriteLine("Sort by price");
-            List<BakeryProducts> menuProduсtsSortByPrice = new List<BakeryProducts>(menuProductsBase); //copy list
-            menuProduсtsSortByPrice.Sort(new BakeryProductPriceComparer(TypeOfSort.Ascending));
-            foreach (var item in menuProduсtsSortByPrice)
+            var menuProductsSortByPrice = new List<BakeryProducts>(menuProductsBase); //copy list
+            menuProductsSortByPrice.Sort(new BakeryProductPriceComparer(TypeOfSort.Ascending));
+            foreach (var item in menuProductsSortByPrice)
             {
                 Console.WriteLine(
                     $"Price/Calories {item.ProductName}:{item.ProductPrice} rub/{item.ProductCalories} cal");
@@ -77,9 +78,9 @@ namespace ConsoleApp2
 
             Console.WriteLine();
             Console.WriteLine("Sort by calories");
-            List<BakeryProducts> menuProduсtsSortByCalories = new List<BakeryProducts>(menuProductsBase); //copy list
-            menuProduсtsSortByCalories.Sort(new BakeryProductCaloriesComparer(TypeOfSort.Ascending));
-            foreach (var item in menuProduсtsSortByCalories)
+            var menuProductsSortByCalories = new List<BakeryProducts>(menuProductsBase); //copy list
+            menuProductsSortByCalories.Sort(new BakeryProductCaloriesComparer(TypeOfSort.Ascending));
+            foreach (var item in menuProductsSortByCalories)
             {
                 Console.WriteLine(
                     $"Price/Calories {item.ProductName}:{item.ProductPrice} rub/{item.ProductCalories} cal");
@@ -102,8 +103,6 @@ namespace ConsoleApp2
                 Console.WriteLine(
                     $"Price/Calories {item.ProductName}:{item.ProductPrice} rub/{item.ProductCalories} cal");
             }
-
         }
-
     }
 }

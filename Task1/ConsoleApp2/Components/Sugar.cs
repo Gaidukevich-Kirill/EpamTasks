@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ConsoleApp2.Components;
 
-namespace ConsoleApp2.Components
+namespace Task1.Components
 {
     public class Sugar:Compound
     {
@@ -11,6 +10,5 @@ namespace ConsoleApp2.Components
         {
 
         }
-
     }
 }

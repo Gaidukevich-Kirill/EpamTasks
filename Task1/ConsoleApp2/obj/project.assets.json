@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\prg\\Task1\\ConsoleApp2\\ConsoleApp2.csproj",
-      "projectName": "ConsoleApp2",
-      "projectPath": "E:\\prg\\Task1\\ConsoleApp2\\ConsoleApp2.csproj",
+      "projectUniqueName": "E:\\prg\\Task1\\ConsoleApp2\\Task1.csproj",
+      "projectName": "Task1",
+      "projectPath": "E:\\prg\\Task1\\ConsoleApp2\\Task1.csproj",
       "packagesPath": "C:\\Users\\New\\.nuget\\packages\\",
       "outputPath": "E:\\prg\\Task1\\ConsoleApp2\\obj\\",
       "projectStyle": "PackageReference",

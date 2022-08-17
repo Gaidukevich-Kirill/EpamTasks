@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp2.Components
+namespace Task1.Components
 {
     public class Egg:Compound
     {
-        public Egg(int cost, int calories):base(cost, calories)
+        public Egg(int cost, int calories) : base(cost, calories)
         {
 
         }
