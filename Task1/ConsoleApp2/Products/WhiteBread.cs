@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ConsoleApp2.Components;
+using Task1.Components;
 
-namespace ConsoleApp2.Products
+namespace Task1.Products
 {
     public class WhiteBread : Bread
     {
         public WhiteBread() : base()
         {
-            Compounds.Add(new Egg(50, 50));
+
         }
 
         public override int ProductPrice
         {
             get
             {
-                int productPrice = 0;
+                var productPrice = 0;
                 foreach (var compound in Compounds)
                 {
                     productPrice += compound.Cost;
                 }
-                int productPriceMargin = (int)(productPrice * 1.11); //margin 11%
+                var productPriceMargin = (int)(productPrice * 1.11); //margin 11%
 
                 return productPriceMargin;
             }

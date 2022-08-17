@@ -1,17 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ConsoleApp2.Products;
-using ConsoleApp2.Components;
+using Task1.Products;
+using Task1.Components;
 
-namespace ConsoleApp2.Comparers
+namespace Task1.Comparers
 {
-    public enum typeOfSort
-    {
-        Ascending = 1,
-        Descending = -1
-    }
-
     public class BakeryProductCaloriesComparer : IComparer<BakeryProducts>
     {
         private readonly TypeOfSort _type;

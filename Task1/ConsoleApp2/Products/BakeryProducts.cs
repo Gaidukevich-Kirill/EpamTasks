@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
-using ConsoleApp2.Components;
+using Task1.Components;
 
-namespace ConsoleApp2.Products
+namespace Task1.Products
 {
     public abstract class BakeryProducts
     {
-        public int ProductID { get; set; }
+        public int ProductId { get; set; }
+
         public string ProductName { get; set; }
+
+        public abstract int ProductPrice { get; }
 
         public List<Compound> Compounds { get; } = new List<Compound>();
 
@@ -17,7 +20,7 @@ namespace ConsoleApp2.Products
         {
             get
             {
-                int productCalories = 0;
+                var productCalories = 0;
                 foreach (var compound in Compounds)
                 {
                     productCalories += compound.Calories;
@@ -26,12 +29,5 @@ namespace ConsoleApp2.Products
                 return productCalories;
             }
         }
-
-        public abstract int ProductPrice
-        {
-            get;
-        }
-
     }
-
 }

@@ -1,0 +1,14 @@
+E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.csproj.AssemblyReference.cache
+E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.GeneratedMSBuildEditorConfig.editorconfig
+E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.AssemblyInfoInputs.cache
+E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.AssemblyInfo.cs
+E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.csproj.CoreCompileInputs.cache
+E:\prg\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\Task1.exe
+E:\prg\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\Task1.deps.json
+E:\prg\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\Task1.runtimeconfig.json
+E:\prg\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\Task1.runtimeconfig.dev.json
+E:\prg\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\Task1.dll
+E:\prg\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\Task1.pdb
+E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.dll
+E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.pdb
+E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.genruntimeconfig.cache
