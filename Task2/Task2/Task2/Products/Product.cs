@@ -24,12 +24,28 @@ namespace Task2.Products
 
         public double ProductCostByOneUnit
         {
-            get => Math.Round(PurchaseCost * Margin, 2);
+            get
+            {
+                return Math.Round(PurchaseCost * Margin, 2);
+            }
         }
 
         public double TotalCost
         {
-            get => Math.Round(PurchaseCost * Margin * NumberOfUnits, 2);
+            get
+            {
+                return Math.Round(PurchaseCost * Margin * NumberOfUnits, 2);
+            } 
+        }
+
+        public static explicit operator int(Product product)
+        {
+            return (int)(product.PurchaseCost * 100);
+        }
+
+        public static explicit operator float(Product product)
+        {
+            return (float)(product.PurchaseCost);
         }
     }
 }

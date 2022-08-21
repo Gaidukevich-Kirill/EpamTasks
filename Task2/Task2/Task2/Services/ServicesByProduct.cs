@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Task2.Exceptions;
 using Task2.Products;
 
 namespace Task2.Services
 {
-    internal class ServicesByProduct
+    public static class ServicesByProduct
     {
         public static Bolt AdditionOfTwoProducts(Bolt leftProduct, Bolt rightProduct)
         {
@@ -27,7 +28,7 @@ namespace Task2.Services
             }
             else
             {
-                throw new Exception("Products have different Product Name");
+                throw new ProductNameException("Products have different Product Name");
             }
         }
 
@@ -51,7 +52,7 @@ namespace Task2.Services
             }
             else
             {
-                throw new Exception("Products have different Product Name");
+                throw new ProductNameException("Products have different Product Name");
             }
         }
 
@@ -75,7 +76,7 @@ namespace Task2.Services
             }
             else
             {
-                throw new Exception("Products have different Product Name");
+                throw new ProductNameException("Products have different Product Name");
             }
         }
 
@@ -94,9 +95,9 @@ namespace Task2.Services
             }
             else
             {
-                throw new Exception("Cannot subtract more units than there are in the product.");
+                throw new ProductQuantityException("Cannot subtract more units than there are in the product.");
             }
-            
+
             return obj;
         }
 
@@ -115,7 +116,7 @@ namespace Task2.Services
             }
             else
             {
-                throw new Exception("Cannot subtract more units than there are in the product.");
+                throw new ProductQuantityException("Cannot subtract more units than there are in the product.");
             }
 
             return obj;
@@ -136,7 +137,7 @@ namespace Task2.Services
             }
             else
             {
-                throw new Exception("Cannot subtract more units than there are in the product.");
+                throw new ProductQuantityException("Cannot subtract more units than there are in the product.");
             }
 
             return obj;
