@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Task3.Figures
 {
-    public class Figure
+    public abstract class Figure
     {
 
     }

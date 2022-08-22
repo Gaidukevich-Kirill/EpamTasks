@@ -1,4 +1,5 @@
 ﻿using System;
+using Task3.Figures;
 
 namespace Task3
 {
@@ -6,7 +7,7 @@ namespace Task3
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
