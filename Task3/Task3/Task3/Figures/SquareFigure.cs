@@ -4,23 +4,20 @@ using System.Text;
 
 namespace Task3.Figures
 {
-    public class Rectangle : Figure
+    public class SquareFigure : Figure
     {
-        private double Height { get; set; }
+        public double Side { get; set; }
 
-        private double Width { get; set; }
-
-        public Rectangle(double height, double width)
+        public SquareFigure(double side)
         {
-            Height = height;
-            Width = width;
+            Side = side;
         }
 
         public double Perimeter
         {
             get
             {
-                return Height * 2 + Width * 2;
+                return Side * 4;
             }
         }
 
@@ -28,7 +25,7 @@ namespace Task3.Figures
         {
             get
             {
-                return Height * Width;
+                return Side * Side;
             }
         }
     }

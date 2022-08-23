@@ -6,7 +6,7 @@ namespace Task3.Figures
 {
     public class EquilateralTriangle
     {
-        private double Side { get; set; }
+        public double Side { get; set; }
 
         public EquilateralTriangle(double side)
         {

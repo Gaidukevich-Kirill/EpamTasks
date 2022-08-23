@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Task3.Figures
 {
-    internal class Circle : Figure
+    public class Circle : Figure
     {
-        private double Radius { get; set; }
+        public double Radius { get; set; }
 
         public Circle(double radius)
         {
@@ -28,7 +28,5 @@ namespace Task3.Figures
                 return Math.PI * Radius * Radius;
             }
         }
-
-
     }
 }
