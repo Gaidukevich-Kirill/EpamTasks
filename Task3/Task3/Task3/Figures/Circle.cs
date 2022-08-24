@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Task3.Sheets;
 
 namespace Task3.Figures
 {
-    public class Circle : Figure
+    public class Circle : Figure, IFilm, IPaper, IPlastic
     {
         public double Radius { get; set; }
 

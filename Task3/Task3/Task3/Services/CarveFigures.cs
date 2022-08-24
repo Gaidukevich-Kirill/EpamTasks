@@ -69,7 +69,7 @@ namespace Task3.Services
         //---------------------------------------------------------Carving square-------------------------------------------
         public static SquareFigure CarvingSquareFromEquilateralTriangle(ref EquilateralTriangle triangle, double side)
         {
-            if ()
+            if (side <= triangle.Side / (1 + 2 / Math.Sqrt(3)))
             {
                 var newSquare = new SquareFigure(side);
                 triangle = null;

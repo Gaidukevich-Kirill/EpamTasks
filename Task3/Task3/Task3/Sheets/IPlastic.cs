@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Task3.Sheets
 {
-    internal class Sheet
+    public interface IPlastic
     {
     }
 }

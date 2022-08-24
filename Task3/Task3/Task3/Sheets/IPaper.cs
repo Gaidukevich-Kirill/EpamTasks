@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Task3.Sheets
 {
-    internal class PaperSheet
+    public interface IPaper
     {
     }
 }

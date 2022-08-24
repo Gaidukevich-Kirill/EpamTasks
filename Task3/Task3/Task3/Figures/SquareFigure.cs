@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Task3.Sheets;
 
 namespace Task3.Figures
 {
-    public class SquareFigure : Figure
+    public class SquareFigure : Figure, IFilm, IPaper, IPlastic
     {
         public double Side { get; set; }
 

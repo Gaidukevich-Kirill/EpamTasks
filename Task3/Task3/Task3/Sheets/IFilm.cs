@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Task3.Sheets
 {
-    public class PlasticSheet
+    public interface IFilm
     {
     }
 }
