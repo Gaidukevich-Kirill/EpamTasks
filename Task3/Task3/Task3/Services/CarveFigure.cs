@@ -6,10 +6,10 @@ using Task3.Exceptions;
 
 namespace Task3.Services
 {
-    public abstract class CarveFigures
+    public abstract class CarveFigure
     {
         //---------------------------------------------------------Carving triangle-------------------------------------------
-        public static EquilateralTriangle CarvingEquilateralTriangleFromCircle(ref Circle circle, double side)
+        public static EquilateralTriangle EquilateralTriangleFromCircle(ref Circle circle, double side)
         {
             if (side <= circle.Radius * Math.Sqrt(3))
             {
@@ -23,7 +23,7 @@ namespace Task3.Services
             }
         }
 
-        public static EquilateralTriangle CarvingEquilateralTriangleFromSquare(ref SquareFigure square, double side)
+        public static EquilateralTriangle EquilateralTriangleFromSquare(ref SquareFigure square, double side)
         {
             if (side * Math.Sqrt(3) / 2 <= square.Side * Math.Sqrt(2))
             {
@@ -38,7 +38,7 @@ namespace Task3.Services
         }
 
         //---------------------------------------------------------Carving circle-------------------------------------------
-        public static Circle CarvingCircleFromEquilateralTriangle(ref EquilateralTriangle triangle, double radius)
+        public static Circle CircleFromEquilateralTriangle(ref EquilateralTriangle triangle, double radius)
         {
             if (radius <= triangle.Side / (2 * Math.Sqrt(3)))
             {
@@ -52,7 +52,7 @@ namespace Task3.Services
             }
         }
 
-        public static Circle CarvingCircleFromSquare(ref SquareFigure square, double radius)
+        public static Circle CircleFromSquare(ref SquareFigure square, double radius)
         {
             if (radius <= square.Side / 2)
             {
@@ -67,7 +67,7 @@ namespace Task3.Services
         }
 
         //---------------------------------------------------------Carving square-------------------------------------------
-        public static SquareFigure CarvingSquareFromEquilateralTriangle(ref EquilateralTriangle triangle, double side)
+        public static SquareFigure SquareFromEquilateralTriangle(ref EquilateralTriangle triangle, double side)
         {
             if (side <= triangle.Side / (1 + 2 / Math.Sqrt(3)))
             {
@@ -81,7 +81,7 @@ namespace Task3.Services
             }
         }
 
-        public static SquareFigure CarvingSquareFromCircle(ref Circle circle, double side)
+        public static SquareFigure SquareFromCircle(ref Circle circle, double side)
         {
             if (side * Math.Sqrt(2) <= circle.Radius * 2)
             {
