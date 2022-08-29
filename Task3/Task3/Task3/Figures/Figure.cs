@@ -6,6 +6,6 @@ namespace Task3.Figures
 {
     public abstract class Figure
     {
-
+        public double Side { get; set; }
     }
 }

@@ -5,20 +5,18 @@ using Task3.Sheets;
 
 namespace Task3.Figures
 {
-    public class EquilateralTriangle: Figure, IFilm, IPaper, IPlastic
+    public class PlasticCircle : Figure, IPlastic
     {
-        public double Side { get; set; }
-
-        public EquilateralTriangle(double side)
+        public PlasticCircle(double radius)
         {
-            Side = side;
+            Side = radius;
         }
 
         public double Perimeter
         {
             get
             {
-                return Side * 3;
+                return 2 * Math.PI * Side;
             }
         }
 
@@ -26,7 +24,7 @@ namespace Task3.Figures
         {
             get
             {
-                return Side * Side * Math.Sqrt(3) / 4;
+                return Math.PI * Side * Side;
             }
         }
     }

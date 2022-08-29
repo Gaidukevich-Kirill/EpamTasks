@@ -5,11 +5,9 @@ using Task3.Sheets;
 
 namespace Task3.Figures
 {
-    public class SquareFigure : Figure, IFilm, IPaper, IPlastic
+    public class FilmSquare : Figure, IFilm
     {
-        public double Side { get; set; }
-
-        public SquareFigure(double side)
+        public FilmSquare(double side)
         {
             Side = side;
         }

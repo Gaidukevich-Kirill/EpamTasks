@@ -10,16 +10,16 @@ namespace Task3
     {
         static void Main(string[] args)
         {
-            var circle1 = new Circle(10);
+            var circle1 = new FilmCircle(10);
 
             //Console.WriteLine(circle1.Perimeter);
             //Console.WriteLine(circle1.Square);
 
             var triangle1 = CarveFigure.EquilateralTriangleFromCircle(ref circle1, 5);
-            var triangle2 = new EquilateralTriangle(2);
-            var triangle3 = new EquilateralTriangle(3);
-            var triangle4 = new EquilateralTriangle(4);
-            var triangle5 = new EquilateralTriangle(6);
+            var triangle2 = new FilmEquilateralTriangle(2);
+            var triangle3 = new FilmEquilateralTriangle(3);
+            var triangle4 = new FilmEquilateralTriangle(4);
+            var triangle5 = new FilmEquilateralTriangle(6);
 
             //Console.WriteLine(triangle1.Side);
 
