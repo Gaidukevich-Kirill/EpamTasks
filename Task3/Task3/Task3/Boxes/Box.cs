@@ -9,33 +9,38 @@ namespace Task3.Boxes
 {
     public class Box
     {
-        public List<object> BoxOfFigures = new List<object>();
+        private readonly List<Figure> _boxOfFigures = new List<Figure>(20); //readonly?
         
-        public void AddFigure<T>(T item)
+        public void AddFigure(Figure item)
         {
-            BoxOfFigures.Add(item);
+            bool alreadyExist = true;
 
-            /*bool alreadyExist = BoxOfFigures.Contains(item);
+            foreach (var figure in _boxOfFigures)
+            {
+                if (item.GetType() == figure.GetType() && item.Side == figure.Side)
+                {
+                    alreadyExist = _boxOfFigures.Contains(item);
+                }
+            }
 
             if (alreadyExist == false)
             {
-                Console.WriteLine(BoxOfFigures.Count);
-                //throw new AddException("This figure is already in the box");
+                throw new AddException("This figure is already in the box");
             }
             else
             {
-                BoxOfFigures.Add(item);
-            }*/
+                _boxOfFigures.Add(item);
+            }
         }
 
         public void CheckFigureByNumber(int number)
         {
-            Console.WriteLine(BoxOfFigures[number]);
+            Console.WriteLine($"{_boxOfFigures[number-1]}, {_boxOfFigures[number-1].Side}");
         }
 
-        public void RemoveFigure()
+        public void RemoveFigure(int number)
         {
-
+            _boxOfFigures.Remove(_boxOfFigures[number-1]);
         }
 
         public void ReplaceFigure()
@@ -45,8 +50,6 @@ namespace Task3.Boxes
 
 
         /*
-        просмотреть по номеру (при этом фигура остается в коробке)
-        извлечь по номеру (при этом фигура удаляется из коробки)
         заменить по номеру 
         //найти фигуру по образцу (эквивалентную по своим характеристикам)
         //показать наличное количество фигур
@@ -63,7 +66,7 @@ namespace Task3.Boxes
 
         public void ShowItems()
         {
-            Console.WriteLine(BoxOfFigures.Count);
+            Console.WriteLine(_boxOfFigures.Count);
         }
     }
 }

@@ -32,8 +32,9 @@ namespace Task3
             box1.AddFigure(triangle5);
             
             box1.CheckFigureByNumber(3);
-            //box1.ShowItems();
-
+            box1.RemoveFigure(5);
+            box1.ShowItems();
+            
 
         }
     }
