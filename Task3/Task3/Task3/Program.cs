@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Task3.Figures;
 using Task3.Services;
 using Task3.Boxes;
+using Task3.Sheets;
 
 namespace Task3
 {
@@ -34,8 +35,19 @@ namespace Task3
             box1.CheckFigureByNumber(3);
             box1.RemoveFigure(5);
             box1.ShowItems();
-            
 
+            var square1 = new PlasticSquare(8);
+            box1.ReplaceFigure(square1, 3);
+            box1.ShowItems();
+
+            var triangleCompare = new FilmEquilateralTriangle(2);
+            box1.CompareFigures(triangleCompare);
+
+            /*Console.WriteLine(typeof(IFilm));
+            foreach (var c in triangle5.GetType().GetInterfaces())
+            {
+                Console.WriteLine(c.Name);
+            }*/
         }
     }
 }

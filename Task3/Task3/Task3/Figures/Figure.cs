@@ -5,7 +5,7 @@ using Task3.Colors;
 
 namespace Task3.Figures
 {
-    public abstract class Figure
+    public abstract class Figure //: IEquatable<Figure>
     {
         public double Side { get; set; }
 
@@ -20,6 +20,26 @@ namespace Task3.Figures
             {
                 value = Colors.Color.WithoutColor;
             }
+        }*/
+
+        /*public bool Equals(Figure other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Side.Equals(other.Side);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Figure)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return Side.GetHashCode();
         }*/
     }
 }

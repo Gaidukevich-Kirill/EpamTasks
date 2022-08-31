@@ -13,7 +13,7 @@ namespace Task3.Boxes
         
         public void AddFigure(Figure item)
         {
-            bool alreadyExist = true;
+            var alreadyExist = true;
 
             foreach (var figure in _boxOfFigures)
             {
@@ -41,16 +41,47 @@ namespace Task3.Boxes
         public void RemoveFigure(int number)
         {
             _boxOfFigures.Remove(_boxOfFigures[number-1]);
+            Console.WriteLine($"Figure {_boxOfFigures[number - 1]}, {_boxOfFigures[number - 1].Side} with {number} position was deleted");
         }
 
-        public void ReplaceFigure()
+        public void ReplaceFigure(Figure item, int position)
         {
-
+            _boxOfFigures.Remove(_boxOfFigures[position-1]);
+            _boxOfFigures.Insert(position-1, item);
         }
+
+        public void CompareFigures(Figure item)
+        {
+            var sameExist = false;
+            var position = 0;
+
+            foreach (var figure in _boxOfFigures)
+            {
+                /*if (item.GetType() == figure.GetType() && item.Side == figure.Side)
+                {
+                    sameExist = _boxOfFigures.Contains(item);
+                    position = _boxOfFigures.IndexOf(figure);
+                }*/
+                if (_boxOfFigures.Contains(item))
+                {
+                    sameExist = true;
+                    position = _boxOfFigures.IndexOf(figure);
+                }
+            }
+
+            if (sameExist == false)
+            {
+                throw new CompareException("Figure isn't found.");
+            }
+            else
+            {
+                Console.WriteLine($"The list has equivalent figure: {_boxOfFigures[position]}, with side: {_boxOfFigures[position].Side}");
+            }
+        }
+
 
 
         /*
-        заменить по номеру 
         //найти фигуру по образцу (эквивалентную по своим характеристикам)
         //показать наличное количество фигур
         суммарную площадь
