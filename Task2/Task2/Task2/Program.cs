@@ -13,13 +13,21 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            var brick1 = new Brick("Brick Red", 3, 1.23, 5);
-            var brick2 = new Brick("Brick RED", 5, 1.25, 6);
+            var brick1 = new Brick(
+                "Brick Red", 
+                3, 
+                1.23, 
+                5);
+            var brick2 = new Brick(
+                "Brick RED", 
+                5, 
+                1.25, 
+                6);
             
             var brickResult1 = ServicesByProduct.AdditionOfTwoProducts(brick1, brick2);
             var brickResult2 = brick1 + brick2;
 
-            List<Brick> listBricks = new List<Brick>
+            var listBricks = new List<Brick>
             {
                 brick1,
                 brick2,
@@ -27,11 +35,11 @@ namespace Task2
                 brickResult2
             };
 
-            foreach (var item in listBricks)
+            foreach (var brick in listBricks)
             {
-                Console.WriteLine($"Product name: {item.ProductName}, Purchase Cost: {item.PurchaseCost}, " +
-                                  $"Margin: {item.Margin}, Number of units: {item.NumberOfUnits}, " +
-                                  $"Cost by one unit: {item.ProductCostByOneUnit}, Total cost: {item.TotalCost}");
+                Console.WriteLine($"Product name: {brick.ProductName}, Purchase Cost: {brick.PurchaseCost}, " +
+                                  $"Margin: {brick.Margin}, Number of units: {brick.NumberOfUnits}, " +
+                                  $"Cost by one unit: {brick.ProductCostByOneUnit}, Total cost: {brick.TotalCost}");
             }
 
             var brickResultMinusUnits1 = ServicesByProduct.SubtractingUnitsOfProduction(brickResult1, 3);
@@ -40,11 +48,11 @@ namespace Task2
             listBricks.Add(brickResultMinusUnits2);
 
             Console.WriteLine();
-            foreach (var item in listBricks)
+            foreach (var brick in listBricks)
             {
-                Console.WriteLine($"Product name: {item.ProductName}, Purchase Cost: {item.PurchaseCost}, " +
-                                  $"Margin: {item.Margin}, Number of units: {item.NumberOfUnits}, " +
-                                  $"Cost by one unit: {item.ProductCostByOneUnit}, Total cost: {item.TotalCost}");
+                Console.WriteLine($"Product name: {brick.ProductName}, Purchase Cost: {brick.PurchaseCost}, " +
+                                  $"Margin: {brick.Margin}, Number of units: {brick.NumberOfUnits}, " +
+                                  $"Cost by one unit: {brick.ProductCostByOneUnit}, Total cost: {brick.TotalCost}");
             }
 
             var allCost = (int)brick1;
@@ -52,17 +60,16 @@ namespace Task2
             Console.WriteLine($"brick1 in int: {allCost}, brick1 in float: {allCost2}");
 
             var path = "E:/prg/Task2/Task2/Test.txt";
-            Infrastructure.JsonWriter<Brick>.JsonWriterInFile(listBricks, path);
-
-            var newListBricks = new List<Brick>();
-            Infrastructure.JsonReader<Brick>.JsonReadFromFileBrick(out newListBricks, path);
+            Infrastructure.JsonWriter<List<Brick>>.WriterInFile(listBricks, path);
+            
+            var newListBricks = Infrastructure.JsonReader<List<Brick>>.ReadFromFile(path);
             Console.WriteLine();
             Console.WriteLine("After reading from file");
-            foreach (var item in newListBricks)
+            foreach (var brick in newListBricks)
             {
-                Console.WriteLine($"Product name: {item.ProductName}, Purchase Cost: {item.PurchaseCost}, " +
-                                  $"Margin: {item.Margin}, Number of units: {item.NumberOfUnits}, " +
-                                  $"Cost by one unit: {item.ProductCostByOneUnit}, Total cost: {item.TotalCost}");
+                Console.WriteLine($"Product name: {brick.ProductName}, Purchase Cost: {brick.PurchaseCost}, " +
+                                  $"Margin: {brick.Margin}, Number of units: {brick.NumberOfUnits}, " +
+                                  $"Cost by one unit: {brick.ProductCostByOneUnit}, Total cost: {brick.TotalCost}");
             }
         }
     }

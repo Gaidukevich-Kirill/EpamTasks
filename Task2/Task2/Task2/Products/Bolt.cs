@@ -7,8 +7,21 @@ namespace Task2.Products
 {
     public class Bolt : Product
     {
-        public Bolt(string productName, double purchaseCost, double margin, int numberOfUnits)
-            : base(productName, purchaseCost, margin, numberOfUnits)
+        public Bolt()
+        {
+
+        }
+
+        public Bolt(
+            string productName, 
+            double purchaseCost, 
+            double margin, 
+            int numberOfUnits)
+            : base(
+                productName, 
+                purchaseCost, 
+                margin, 
+                numberOfUnits)
         {
 
         }
@@ -17,7 +30,7 @@ namespace Task2.Products
         {
             if (leftProduct.ProductName.Equals(rightProduct.ProductName, StringComparison.InvariantCultureIgnoreCase))
             {
-                var obj = new Bolt("", 0, 0, 0)
+                var obj = new Bolt()
                 {
                     ProductName = leftProduct.ProductName,
                     PurchaseCost = Math.Round((leftProduct.PurchaseCost * leftProduct.NumberOfUnits
@@ -39,7 +52,7 @@ namespace Task2.Products
 
         public static Bolt operator -(Bolt product, int numberOfUnits)
         {
-            var obj = new Bolt("", 0, 0, 0)
+            var obj = new Bolt()
             {
                 ProductName = product.ProductName,
                 PurchaseCost = product.PurchaseCost,
@@ -57,6 +70,5 @@ namespace Task2.Products
 
             return obj;
         }
-
     }
 }

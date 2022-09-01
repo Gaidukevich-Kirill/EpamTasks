@@ -9,13 +9,15 @@ namespace Task2.Infrastructure
 {
     public static class JsonReader<T>
     {
-        public static void JsonReadFromFileBrick(out List<T> listBricks, string path)
+        public static T ReadFromFile(string path)
         {
             var sw = new StreamReader(path);
 
             var informationOfObject = sw.ReadToEnd();
-            listBricks = JsonConvert.DeserializeObject<List<T>>(informationOfObject);
+            var item = JsonConvert.DeserializeObject<T>(informationOfObject);
             sw.Close();
+
+            return item;
         }
     }
 }

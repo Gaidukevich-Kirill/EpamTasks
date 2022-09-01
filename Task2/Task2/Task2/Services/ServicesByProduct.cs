@@ -12,7 +12,7 @@ namespace Task2.Services
         {
             if (leftProduct.ProductName.Equals(rightProduct.ProductName, StringComparison.InvariantCultureIgnoreCase))
             {
-                var obj = new Bolt("", 0, 0, 0)
+                var obj = new Bolt()
                 {
                     ProductName = leftProduct.ProductName,
                     PurchaseCost = Math.Round((leftProduct.PurchaseCost * leftProduct.NumberOfUnits
@@ -36,7 +36,7 @@ namespace Task2.Services
         {
             if (leftProduct.ProductName.Equals(rightProduct.ProductName, StringComparison.InvariantCultureIgnoreCase))
             {
-                var obj = new Brick("", 0, 0, 0)
+                var obj = new Brick()
                 {
                     ProductName = leftProduct.ProductName,
                     PurchaseCost = Math.Round((leftProduct.PurchaseCost * leftProduct.NumberOfUnits
@@ -60,7 +60,7 @@ namespace Task2.Services
         {
             if (leftProduct.ProductName.Equals(rightProduct.ProductName, StringComparison.InvariantCultureIgnoreCase))
             {
-                var obj = new Screw("", 0, 0, 0)
+                var obj = new Screw()
                 {
                     ProductName = leftProduct.ProductName,
                     PurchaseCost = Math.Round((leftProduct.PurchaseCost * leftProduct.NumberOfUnits
@@ -82,7 +82,7 @@ namespace Task2.Services
 
         public static Bolt SubtractingUnitsOfProduction(Bolt product, int numberOfUnits)
         {
-            var obj = new Bolt("", 0, 0, 0)
+            var obj = new Bolt()
             {
                 ProductName = product.ProductName,
                 PurchaseCost = product.PurchaseCost,
@@ -103,7 +103,7 @@ namespace Task2.Services
 
         public static Brick SubtractingUnitsOfProduction(Brick product, int numberOfUnits)
         {
-            var obj = new Brick("", 0, 0, 0)
+            var obj = new Brick()
             {
                 ProductName = product.ProductName,
                 PurchaseCost = product.PurchaseCost,
@@ -124,7 +124,7 @@ namespace Task2.Services
 
         public static Screw SubtractingUnitsOfProduction(Screw product, int numberOfUnits)
         {
-            var obj = new Screw("", 0, 0, 0)
+            var obj = new Screw()
             {
                 ProductName = product.ProductName,
                 PurchaseCost = product.PurchaseCost,

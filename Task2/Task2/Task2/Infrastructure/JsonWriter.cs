@@ -9,11 +9,11 @@ namespace Task2.Infrastructure
 {
     public static class JsonWriter<T>
     {
-        public static void JsonWriterInFile(List<T> listBricks, string path)
+        public static void WriterInFile(T item, string path)
         {
             var sw = new StreamWriter(path);
 
-            var informationOfObject = JsonConvert.SerializeObject(listBricks);
+            var informationOfObject = JsonConvert.SerializeObject(item);
             sw.WriteLine(informationOfObject);
             sw.Close();
         }

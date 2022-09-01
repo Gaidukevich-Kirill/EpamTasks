@@ -7,17 +7,30 @@ namespace Task2.Products
 {
     public class Brick : Product
     {
-        public Brick(string productName, double purchaseCost, double margin, int numberOfUnits)
-            : base(productName, purchaseCost, margin, numberOfUnits)
+        public Brick()
         {
 
+        }
+
+        public Brick(
+            string productName,
+            double purchaseCost,
+            double margin,
+            int numberOfUnits)
+            : base(
+                productName,
+                purchaseCost,
+                margin,
+                numberOfUnits)
+        {
+            
         }
 
         public static Brick operator +(Brick leftProduct, Brick rightProduct)
         {
             if (leftProduct.ProductName.Equals(rightProduct.ProductName, StringComparison.InvariantCultureIgnoreCase))
             {
-                var obj = new Brick("", 0, 0, 0)
+                var obj = new Brick()
                 {
                     ProductName = leftProduct.ProductName,
                     PurchaseCost = Math.Round((leftProduct.PurchaseCost * leftProduct.NumberOfUnits
@@ -39,7 +52,7 @@ namespace Task2.Products
 
         public static Brick operator -(Brick product, int numberOfUnits)
         {
-            var obj = new Brick("", 0, 0, 0)
+            var obj = new Brick()
             {
                 ProductName = product.ProductName,
                 PurchaseCost = product.PurchaseCost,

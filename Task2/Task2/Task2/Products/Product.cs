@@ -14,7 +14,16 @@ namespace Task2.Products
 
         public int NumberOfUnits { get; set; }
 
-        public Product(string productName, double purchaseCost, double margin, int numberOfUnits)
+        public Product()
+        {
+
+        }
+
+        public Product(
+            string productName, 
+            double purchaseCost, 
+            double margin, 
+            int numberOfUnits)
         {
             ProductName = productName;
             PurchaseCost = purchaseCost;
