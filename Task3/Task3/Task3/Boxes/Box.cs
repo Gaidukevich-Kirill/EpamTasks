@@ -57,12 +57,7 @@ namespace Task3.Boxes
 
             foreach (var figure in _boxOfFigures)
             {
-                /*if (item.GetType() == figure.GetType() && item.Side == figure.Side)
-                {
-                    sameExist = _boxOfFigures.Contains(item);
-                    position = _boxOfFigures.IndexOf(figure);
-                }*/
-                if (_boxOfFigures.Contains(item))
+                if (item.GetType() == figure.GetType() && item.Side == figure.Side)
                 {
                     sameExist = true;
                     position = _boxOfFigures.IndexOf(figure);
@@ -79,11 +74,21 @@ namespace Task3.Boxes
             }
         }
 
+        public void AmountFigures()
+        {
+            Console.WriteLine(_boxOfFigures.Count);
+        }
 
+        public void PerimeterAllFigures()
+        {
+            var perimeter = 0;
 
+            foreach (var figure in _boxOfFigures)
+            {
+                //figure.Perimeter
+            }
+        }
         /*
-        //найти фигуру по образцу (эквивалентную по своим характеристикам)
-        //показать наличное количество фигур
         суммарную площадь
         суммарный периметр
         достать все Круги
@@ -95,9 +100,6 @@ namespace Task3.Boxes
          загрузить все фигуры в коробку из XML-файла, используя XmlReader
         */
 
-        public void ShowItems()
-        {
-            Console.WriteLine(_boxOfFigures.Count);
-        }
+
     }
 }

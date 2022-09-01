@@ -9,6 +9,11 @@ namespace Task3.Figures
     {
         public double Side { get; set; }
 
+        public abstract double Perimeter
+        {
+            get;
+        }
+
         /*public string Color
         {
             get

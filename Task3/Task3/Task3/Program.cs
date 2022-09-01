@@ -14,7 +14,7 @@ namespace Task3
             var circle1 = new FilmCircle(10);
 
             //Console.WriteLine(circle1.Perimeter);
-            //Console.WriteLine(circle1.Square);
+            //Console.WriteLine(circle1.Area);
 
             var triangle1 = CarveFigure.EquilateralTriangleFromCircle(ref circle1, 5);
             var triangle2 = new FilmEquilateralTriangle(2);
@@ -33,12 +33,12 @@ namespace Task3
             box1.AddFigure(triangle5);
             
             box1.CheckFigureByNumber(3);
-            box1.RemoveFigure(5);
-            box1.ShowItems();
+            box1.RemoveFigure(3);
+            box1.AmountFigures();
 
             var square1 = new PlasticSquare(8);
             box1.ReplaceFigure(square1, 3);
-            box1.ShowItems();
+            box1.AmountFigures();
 
             var triangleCompare = new FilmEquilateralTriangle(2);
             box1.CompareFigures(triangleCompare);

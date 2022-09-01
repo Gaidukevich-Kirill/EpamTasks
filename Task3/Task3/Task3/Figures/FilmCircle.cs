@@ -12,7 +12,7 @@ namespace Task3.Figures
             Side = radius;
         }
 
-        public double Perimeter
+        public override double Perimeter
         {
             get
             {
@@ -20,7 +20,7 @@ namespace Task3.Figures
             }
         }
 
-        public double Square
+        public double Area
         {
             get
             {
