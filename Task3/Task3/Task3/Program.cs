@@ -43,6 +43,23 @@ namespace Task3
             var triangleCompare = new FilmEquilateralTriangle(2);
             box1.CompareFigures(triangleCompare);
 
+            box1.PerimeterAllFigures();
+            box1.AreaAllFigures();
+
+            box1.AmountFigures();
+            var circle2 = new FilmCircle(10);
+            var circle3 = new FilmCircle(20);
+            var circle4 = new FilmCircle(30);
+            box1.AddFigure(circle2);
+            box1.AddFigure(circle3);
+            box1.AddFigure(circle4);
+            box1.AmountFigures();
+            //box1.TakeOutAllCircles();
+            //box1.TakeOutAllFilmFigures();
+            box1.AmountFigures();
+
+
+
             /*Console.WriteLine(typeof(IFilm));
             foreach (var c in triangle5.GetType().GetInterfaces())
             {

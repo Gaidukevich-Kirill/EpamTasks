@@ -20,7 +20,7 @@ namespace Task3.Figures
             }
         }
 
-        public double Area
+        public override double Area
         {
             get
             {

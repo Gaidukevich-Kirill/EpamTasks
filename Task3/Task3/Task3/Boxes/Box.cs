@@ -9,7 +9,7 @@ namespace Task3.Boxes
 {
     public class Box
     {
-        private readonly List<Figure> _boxOfFigures = new List<Figure>(20); //readonly?
+        private readonly List<Figure> _boxOfFigures = new List<Figure>(20);
         
         public void AddFigure(Figure item)
         {
@@ -81,25 +81,62 @@ namespace Task3.Boxes
 
         public void PerimeterAllFigures()
         {
-            var perimeter = 0;
+            double perimeter = 0;
 
             foreach (var figure in _boxOfFigures)
             {
-                //figure.Perimeter
+                perimeter += figure.Perimeter;
+            }
+
+            Console.WriteLine($"Perimeter of all figures in the box: {perimeter}");
+        }
+
+        public void AreaAllFigures()
+        {
+            double area = 0;
+
+            foreach (var figure in _boxOfFigures)
+            {
+                area += figure.Area;
+            }
+
+            Console.WriteLine($"Area of all figures in the box: {area}");
+        }
+
+        public void TakeOutAllCircles()
+        {
+            for (int i = 0; i < _boxOfFigures.Count; i++)
+            {
+                if (_boxOfFigures[i].GetType() == typeof(FilmCircle) ||
+                    _boxOfFigures[i].GetType() == typeof(PaperCircle) ||
+                    _boxOfFigures[i].GetType() == typeof(PlasticCircle))
+                {
+                    _boxOfFigures.Remove(_boxOfFigures[i]);
+                    i--;
+                }
             }
         }
+
+        public void TakeOutAllFilmFigures()
+        {
+            for (int i = 0; i < _boxOfFigures.Count; i++)
+            {
+                if (_boxOfFigures[i].GetType() == typeof(FilmCircle) ||
+                    _boxOfFigures[i].GetType() == typeof(FilmEquilateralTriangle) ||
+                    _boxOfFigures[i].GetType() == typeof(FilmSquare))
+                {
+                    _boxOfFigures.Remove(_boxOfFigures[i]);
+                    i--;
+                }
+            }
+        }
+
         /*
-        суммарную площадь
-        суммарный периметр
-        достать все Круги
-        достать все Пленочные фигуры
         достать все Пластиковые фигуры, которые ни разу не красились
         сохранить все фигуры / только бумажные / только пластиковые / только плёночные из коробки в XML-файл, используя StreamWriter
         сохранить все фигуры / только бумажные / только пластиковые / только плёночные из коробки в XML-файл, используя XmlWriter
-         загрузить все фигуры в коробку из XML-файла, используя StreamReader
-         загрузить все фигуры в коробку из XML-файла, используя XmlReader
+        загрузить все фигуры в коробку из XML-файла, используя StreamReader
+        загрузить все фигуры в коробку из XML-файла, используя XmlReader
         */
-
-
     }
 }

@@ -14,6 +14,11 @@ namespace Task3.Figures
             get;
         }
 
+        public abstract double Area
+        {
+            get;
+        }
+
         /*public string Color
         {
             get
