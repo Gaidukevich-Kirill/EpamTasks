@@ -6,10 +6,9 @@ namespace Task3.Colors
 {
     public enum Color
     {
-        WithoutColor,
+            WithoutColor,
         Red,
         Green,
-        Blue,
-        Yellow
+        Blue
     }
 }

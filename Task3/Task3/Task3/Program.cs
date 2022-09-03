@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Task3.Figures;
-using Task3.Services;
 using Task3.Boxes;
+using Task3.Colors;
 using Task3.Sheets;
 
 namespace Task3
@@ -16,7 +16,9 @@ namespace Task3
             //Console.WriteLine(circle1.Perimeter);
             //Console.WriteLine(circle1.Area);
 
-            var triangle1 = CarveFigure.EquilateralTriangleFromCircle(ref circle1, 5);
+            //var triangle1 = CarveFigure.EquilateralTriangleFromCircle(ref circle1, 5);
+            
+            var triangle1 = new FilmEquilateralTriangle(ref circle1, 5);
             var triangle2 = new FilmEquilateralTriangle(2);
             var triangle3 = new FilmEquilateralTriangle(3);
             var triangle4 = new FilmEquilateralTriangle(4);
@@ -58,7 +60,9 @@ namespace Task3
             //box1.TakeOutAllFilmFigures();
             box1.AmountFigures();
 
-
+            var f1 = new FilmCircle(10);
+            Console.WriteLine(f1.ColorFigure);
+            f1.PaintFigure(1);
 
             /*Console.WriteLine(typeof(IFilm));
             foreach (var c in triangle5.GetType().GetInterfaces())

@@ -5,9 +5,29 @@ using Task3.Colors;
 
 namespace Task3.Figures
 {
-    public abstract class Figure //: IEquatable<Figure>
+    public abstract class Figure
     {
         public double Side { get; set; }
+
+        public Color ColorFigure { get; set; }
+
+        public void PaintFigure(int number)
+        {
+            switch (number)
+            {
+                case 1: ColorFigure = Color.Red;
+                    break;
+                case 2: ColorFigure = Color.Green;
+                    break;
+                case 3: 
+                    ColorFigure = Color.Blue;
+                    break;
+                default: Console.WriteLine("Cannot use this color.");
+                    break;
+            }
+
+            Console.WriteLine($"Color is {ColorFigure}");
+        }
 
         public abstract double Perimeter
         {
@@ -18,38 +38,5 @@ namespace Task3.Figures
         {
             get;
         }
-
-        /*public string Color
-        {
-            get
-            {
-                return Colors.Color.WithoutColor(string);
-            }
-
-            set
-            {
-                value = Colors.Color.WithoutColor;
-            }
-        }*/
-
-        /*public bool Equals(Figure other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return Side.Equals(other.Side);
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((Figure)obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return Side.GetHashCode();
-        }*/
     }
 }
