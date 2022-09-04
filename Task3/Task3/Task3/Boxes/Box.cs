@@ -6,13 +6,30 @@ using System.Text;
 using Task3.Colors;
 using Task3.Exceptions;
 using Task3.Figures;
+using Task3.FileManagment;
 
 namespace Task3.Boxes
 {
     public class Box
     {
         private readonly List<Figure> _boxOfFigures = new List<Figure>(20);
-        
+        private readonly IBoxFileWorker _boxFileWorker;
+
+        public Box()
+        {
+
+        }
+
+        public Box(IBoxFileWorker boxFileWorker)
+        {
+            _boxFileWorker = boxFileWorker;
+        }
+
+        public void Save(string path)
+        {
+            _boxFileWorker.SaveFile(path, this);
+        }
+
         public void AddFigure(Figure item)
         {
             var alreadyExist = true;
@@ -148,7 +165,7 @@ namespace Task3.Boxes
             }
         }
 
-
+        
 
         /*
         сохранить все фигуры / только бумажные / только пластиковые / только плёночные из коробки в XML-файл, используя StreamWriter

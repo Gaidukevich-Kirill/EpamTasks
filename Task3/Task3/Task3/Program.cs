@@ -27,7 +27,7 @@ namespace Task3
 
             //Console.WriteLine(triangle1.Side);
 
-            var box1 = new Box();
+            var box1 = new Box(new XmlBoxFileWorker());
 
             box1.AddFigure(triangle1);
             box1.AddFigure(triangle2);
