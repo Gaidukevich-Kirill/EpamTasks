@@ -2,31 +2,36 @@
 using System.Collections.Generic;
 using System.Text;
 using Task3.Colors;
+using Task3.Exceptions;
 
 namespace Task3.Figures
 {
     public abstract class Figure
     {
         public double Side { get; set; }
-
+        
         public Color ColorFigure { get; set; }
 
-        public void PaintFigure(int number)
+        public void PaintFigure(Color color)
         {
-            switch (number)
+            if (this.GetType() == typeof(FilmCircle) ||
+                this.GetType() == typeof(FilmEquilateralTriangle) ||
+                this.GetType() == typeof(FilmSquare))
             {
-                case 1: ColorFigure = Color.Red;
-                    break;
-                case 2: ColorFigure = Color.Green;
-                    break;
-                case 3: 
-                    ColorFigure = Color.Blue;
-                    break;
-                default: Console.WriteLine("Cannot use this color.");
-                    break;
+                throw new PaintException("Cannot paint this figure.");
             }
 
-            Console.WriteLine($"Color is {ColorFigure}");
+            if (this.GetType() == typeof(PaperCircle) ||
+                this.GetType() == typeof(PaperEquilateralTriangle) ||
+                this.GetType() == typeof(PaperSquare))
+            {
+                if (this.ColorFigure != Color.WithoutColor)
+                {
+                    throw new PaintException("Cannot paint this figure.");
+                }
+            }
+
+            this.ColorFigure = color;
         }
 
         public abstract double Perimeter

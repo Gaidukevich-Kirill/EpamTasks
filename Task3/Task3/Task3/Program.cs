@@ -4,6 +4,7 @@ using Task3.Figures;
 using Task3.Boxes;
 using Task3.Colors;
 using Task3.Sheets;
+using Task3.FileManagment;
 
 namespace Task3
 {
@@ -60,15 +61,19 @@ namespace Task3
             //box1.TakeOutAllFilmFigures();
             box1.AmountFigures();
 
-            var f1 = new FilmCircle(10);
+            var f1 = new PlasticCircle(10);
             Console.WriteLine(f1.ColorFigure);
-            f1.PaintFigure(1);
+            f1.PaintFigure(Enum.Parse<Color>("Red", true));
+            Console.WriteLine(f1.ColorFigure);
+            f1.PaintFigure(Enum.Parse<Color>("Green", true));
+            Console.WriteLine(f1.ColorFigure);
 
-            /*Console.WriteLine(typeof(IFilm));
-            foreach (var c in triangle5.GetType().GetInterfaces())
-            {
-                Console.WriteLine(c.Name);
-            }*/
+            var path = @"E:\prg\Task3\Task3\test.xml";
+
+            //box1.SaveAllFiguresInFileSw(path);
+
+            IBoxFileWorker fileWorker = new XmlBoxFileWorker();
+            fileWorker.SaveFile(path, box1);
         }
     }
 }

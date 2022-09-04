@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using Task3.Colors;
 using Task3.Exceptions;
 using Task3.Figures;
 
@@ -131,14 +133,28 @@ namespace Task3.Boxes
             }
         }
 
-
+        public void TakeOutAllPlasticClearFigures()
+        {
+            for (int i = 0; i < _boxOfFigures.Count; i++)
+            {
+                if ((_boxOfFigures[i].GetType() == typeof(PlasticCircle) ||
+                    _boxOfFigures[i].GetType() == typeof(PlasticEquilateralTriangle) ||
+                    _boxOfFigures[i].GetType() == typeof(PlasticSquare)) &&
+                    _boxOfFigures[i].ColorFigure == Color.WithoutColor)
+                {
+                    _boxOfFigures.Remove(_boxOfFigures[i]);
+                    i--;
+                }
+            }
+        }
 
 
 
         /*
-        достать все Пластиковые фигуры, которые ни разу не красились
         сохранить все фигуры / только бумажные / только пластиковые / только плёночные из коробки в XML-файл, используя StreamWriter
         сохранить все фигуры / только бумажные / только пластиковые / только плёночные из коробки в XML-файл, используя XmlWriter
+        
+        
         загрузить все фигуры в коробку из XML-файла, используя StreamReader
         загрузить все фигуры в коробку из XML-файла, используя XmlReader
         */
