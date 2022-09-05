@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Task2.Exceptions;
 
@@ -28,46 +29,50 @@ namespace Task2.Products
 
         public static Brick operator +(Brick leftProduct, Brick rightProduct)
         {
-            if (leftProduct.ProductName.Equals(rightProduct.ProductName, StringComparison.InvariantCultureIgnoreCase))
+            if (leftProduct == null || rightProduct == null)
             {
-                var obj = new Brick()
-                {
-                    ProductName = leftProduct.ProductName,
-                    PurchaseCost = Math.Round((leftProduct.PurchaseCost * leftProduct.NumberOfUnits
-                                               + rightProduct.PurchaseCost * rightProduct.NumberOfUnits)
-                                              / (leftProduct.NumberOfUnits + rightProduct.NumberOfUnits), 2),
-                    Margin = Math.Round((leftProduct.Margin * leftProduct.NumberOfUnits
-                                         + rightProduct.Margin * rightProduct.NumberOfUnits)
-                                        / (leftProduct.NumberOfUnits + rightProduct.NumberOfUnits), 2),
-                    NumberOfUnits = leftProduct.NumberOfUnits + rightProduct.NumberOfUnits
-                };
-
-                return obj;
+                throw new ArgumentNullException();
             }
-            else
+            if (!(leftProduct.ProductName.Equals(rightProduct.ProductName,
+                    StringComparison.InvariantCultureIgnoreCase)))
             {
                 throw new ProductNameException("Products have different Product Name");
             }
+
+            var obj = new Brick()
+            {
+                ProductName = leftProduct.ProductName,
+                PurchaseCost = Math.Round((leftProduct.PurchaseCost * leftProduct.NumberOfUnits
+                                           + rightProduct.PurchaseCost * rightProduct.NumberOfUnits)
+                                          / (leftProduct.NumberOfUnits + rightProduct.NumberOfUnits), 2),
+                Margin = Math.Round((leftProduct.Margin * leftProduct.NumberOfUnits
+                                     + rightProduct.Margin * rightProduct.NumberOfUnits)
+                                    / (leftProduct.NumberOfUnits + rightProduct.NumberOfUnits), 2),
+                NumberOfUnits = leftProduct.NumberOfUnits + rightProduct.NumberOfUnits
+            };
+
+            return obj;
         }
 
         public static Brick operator -(Brick product, int numberOfUnits)
         {
-            var obj = new Brick()
+            if (product == null)
             {
-                ProductName = product.ProductName,
-                PurchaseCost = product.PurchaseCost,
-                Margin = product.Margin
-            };
-
-            if (product.NumberOfUnits >= numberOfUnits)
-            {
-                obj.NumberOfUnits = product.NumberOfUnits - numberOfUnits;
+                throw new ArgumentNullException();
             }
-            else
+            if (product.NumberOfUnits < numberOfUnits)
             {
                 throw new ProductQuantityException("Cannot subtract more units than there are in the product.");
             }
 
+            var obj = new Brick()
+            {
+                ProductName = product.ProductName,
+                PurchaseCost = product.PurchaseCost,
+                Margin = product.Margin,
+                NumberOfUnits = product.NumberOfUnits - numberOfUnits
+            };
+            
             return obj;
         }
     }

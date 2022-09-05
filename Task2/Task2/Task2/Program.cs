@@ -59,7 +59,7 @@ namespace Task2
             var allCost2 = (float)brick1;
             Console.WriteLine($"brick1 in int: {allCost}, brick1 in float: {allCost2}");
 
-            var path = "E:/prg/Task2/Task2/Test.txt";
+            var path = @"E:\prg\Task2\Task2\Test.txt";
             Infrastructure.JsonWriter<List<Brick>>.WriterInFile(listBricks, path);
             
             var newListBricks = Infrastructure.JsonReader<List<Brick>>.ReadFromFile(path);
