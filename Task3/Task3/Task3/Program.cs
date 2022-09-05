@@ -61,19 +61,19 @@ namespace Task3
             //box1.TakeOutAllFilmFigures();
             box1.AmountFigures();
 
-            var f1 = new PlasticCircle(10);
-            Console.WriteLine(f1.ColorFigure);
-            f1.PaintFigure(Enum.Parse<Color>("Red", true));
-            Console.WriteLine(f1.ColorFigure);
-            f1.PaintFigure(Enum.Parse<Color>("Green", true));
-            Console.WriteLine(f1.ColorFigure);
+            var circle5 = new PlasticCircle(10);
+            circle5.PaintFigure(Enum.Parse<Color>("Red", true));
+            var circle6 = new PlasticCircle(11);
+            circle6.PaintFigure(Enum.Parse<Color>("Green", true));
+            
+            box1.AddFigure(circle5);
+            box1.AddFigure(circle6);
 
             var path = @"E:\prg\Task3\Task3\test.xml";
 
-            //box1.SaveAllFiguresInFileSw(path);
-
             IBoxFileWorker fileWorker = new XmlBoxFileWorker();
-            fileWorker.SaveFile(path, box1);
+            //fileWorker.SaveFileXml(path, box1);
+
         }
     }
 }

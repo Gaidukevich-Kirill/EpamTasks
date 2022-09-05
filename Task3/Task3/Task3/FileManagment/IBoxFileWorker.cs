@@ -7,8 +7,9 @@ namespace Task3.FileManagment
 {
     public interface IBoxFileWorker
     {
-        void SaveFile(string path, Box box);
-
-        Box LoadFile(string filename);
+        void SaveFileXml(string path, Box box);
+        void SaveFileSw(string path, Box box);
+        Box LoadFileXml(string filename);
+        Box LoadFileSw(string filename);
     }
 }

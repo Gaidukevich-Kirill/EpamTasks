@@ -8,6 +8,11 @@ namespace Task3.Figures
 {
     public class PlasticEquilateralTriangle : Figure, IPlastic
     {
+        public PlasticEquilateralTriangle()
+        {
+
+        }
+
         public PlasticEquilateralTriangle(double side)
         {
             Side = side;

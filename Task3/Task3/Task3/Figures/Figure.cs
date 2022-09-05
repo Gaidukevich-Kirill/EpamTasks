@@ -1,12 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 using Task3.Colors;
 using Task3.Exceptions;
 using Task3.Infrastructure;
 
 namespace Task3.Figures
 {
+    [XmlInclude(typeof(FilmCircle)), 
+     XmlInclude(typeof(FilmEquilateralTriangle)),
+     XmlInclude(typeof(FilmSquare)),
+     XmlInclude(typeof(PaperCircle)),
+     XmlInclude(typeof(PaperEquilateralTriangle)),
+     XmlInclude(typeof(PaperSquare)),
+     XmlInclude(typeof(PlasticCircle)),
+     XmlInclude(typeof(PlasticEquilateralTriangle)),
+     XmlInclude(typeof(PlasticSquare))]
     public abstract class Figure
     {
         public double Side { get; set; }
@@ -18,40 +28,14 @@ namespace Task3.Figures
 
         }
 
-        private bool IsTypeFilm()
-        {
-            foreach (var type in FilmConsts.ValidFilmTypes)
-            {
-                if (GetType() == type)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private bool IsTypePaper()
-        {
-            foreach (var type in PaperConsts.ValidFilmTypes)
-            {
-                if (GetType() == type)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
         public void PaintFigure(Color color)
         {
-            if (IsTypeFilm())
+            if (IsTypeFilm.CheckType(this.GetType()))
             {
                 throw new PaintException("Cannot paint this figure.");
             }
 
-            if (IsTypePaper())
+            if (IsTypePaper.CheckType(this.GetType()))
             {
                 if (this.ColorFigure != Color.WithoutColor)
                 {

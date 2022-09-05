@@ -8,6 +8,11 @@ namespace Task3.Figures
 {
     public class PaperCircle : Figure, IPaper
     {
+        public PaperCircle()
+        {
+
+        }
+
         public PaperCircle(double radius)
         {
             Side = radius;

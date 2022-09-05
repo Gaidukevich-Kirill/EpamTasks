@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Xml.Serialization;
 using Task3.Boxes;
 using Task3.Figures;
 
@@ -8,25 +10,31 @@ namespace Task3.FileManagment
 {
     public class XmlBoxFileWorker : IBoxFileWorker
     {
-        public Box LoadFile(string filename)
+        public void SaveFileXml(string path, Box box)
+        {
+            var xmlSerializer = new XmlSerializer(typeof(Box));
+
+            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+            {
+                xmlSerializer.Serialize(fs, box);
+
+                Console.WriteLine("Object has been serialized");
+            }
+        }
+
+        public void SaveFileSw(string path, Box box)
         {
             throw new NotImplementedException();
         }
 
-        public void SaveFile(string path, Box box)
+        public Box LoadFileXml(string filename)
         {
-            /*using (StreamWriter writer = new StreamWriter(path, false))
-            {
-                writer.WriteLineAsync("qwe");
-            }*/
+            throw new NotImplementedException();
+        }
 
-            System.Xml.Serialization.XmlSerializer writer =
-                new System.Xml.Serialization.XmlSerializer(typeof(Box));
-
-            System.IO.FileStream file = System.IO.File.Create(path);
-
-            writer.Serialize(file, box);
-            file.Close();
+        public Box LoadFileSw(string filename)
+        {
+            throw new NotImplementedException();
         }
     }
 }

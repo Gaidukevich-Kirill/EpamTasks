@@ -5,13 +5,13 @@ using Task3.Figures;
 
 namespace Task3.Infrastructure
 {
-    public class PaperConsts
+    internal class CircleConsts
     {
-        public static readonly Type[] ValidPaperTypes = new Type[]
+        public static readonly Type[] ValidCircleTypes = new Type[]
         {
+            typeof(FilmCircle), 
             typeof(PaperCircle),
-            typeof(PaperEquilateralTriangle),
-            typeof(PaperSquare)
+            typeof(PlasticCircle)
         };
     }
 }

@@ -8,6 +8,11 @@ namespace Task3.Figures
 {
     public class FilmEquilateralTriangle: Figure, IFilm
     {
+        public FilmEquilateralTriangle()
+        {
+
+        }
+
         public FilmEquilateralTriangle(double side)
         {
             Side = side;

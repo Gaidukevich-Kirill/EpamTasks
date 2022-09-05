@@ -7,12 +7,14 @@ using Task3.Colors;
 using Task3.Exceptions;
 using Task3.Figures;
 using Task3.FileManagment;
+using Task3.Infrastructure;
 
 namespace Task3.Boxes
 {
     public class Box
     {
-        private readonly List<Figure> _boxOfFigures = new List<Figure>(20);
+        public List<Figure> BoxOfFigures = new List<Figure>(20);
+        
         private readonly IBoxFileWorker _boxFileWorker;
 
         public Box()
@@ -25,20 +27,15 @@ namespace Task3.Boxes
             _boxFileWorker = boxFileWorker;
         }
 
-        public void Save(string path)
-        {
-            _boxFileWorker.SaveFile(path, this);
-        }
-
         public void AddFigure(Figure item)
         {
             var alreadyExist = true;
 
-            foreach (var figure in _boxOfFigures)
+            foreach (var figure in BoxOfFigures)
             {
                 if (item.GetType() == figure.GetType() && item.Side == figure.Side)
                 {
-                    alreadyExist = _boxOfFigures.Contains(item);
+                    alreadyExist = BoxOfFigures.Contains(item);
                 }
             }
 
@@ -48,25 +45,27 @@ namespace Task3.Boxes
             }
             else
             {
-                _boxOfFigures.Add(item);
+                BoxOfFigures.Add(item);
             }
         }
 
         public void CheckFigureByNumber(int number)
         {
-            Console.WriteLine($"{_boxOfFigures[number-1]}, {_boxOfFigures[number-1].Side}");
+            Console.WriteLine($"{BoxOfFigures[number-1]}, {BoxOfFigures[number-1].Side}");
         }
 
         public void RemoveFigure(int number)
         {
-            _boxOfFigures.Remove(_boxOfFigures[number-1]);
-            Console.WriteLine($"Figure {_boxOfFigures[number - 1]}, {_boxOfFigures[number - 1].Side} with {number} position was deleted");
+            BoxOfFigures.Remove(BoxOfFigures[number - 1]);
+            Console.WriteLine(
+                $"Figure {BoxOfFigures[number - 1]}, {BoxOfFigures[number - 1].Side} " +
+                $"with {number} position was deleted");
         }
 
         public void ReplaceFigure(Figure item, int position)
         {
-            _boxOfFigures.Remove(_boxOfFigures[position-1]);
-            _boxOfFigures.Insert(position-1, item);
+            BoxOfFigures.Remove(BoxOfFigures[position-1]);
+            BoxOfFigures.Insert(position-1, item);
         }
 
         public void CompareFigures(Figure item)
@@ -74,12 +73,12 @@ namespace Task3.Boxes
             var sameExist = false;
             var position = 0;
 
-            foreach (var figure in _boxOfFigures)
+            foreach (var figure in BoxOfFigures)
             {
                 if (item.GetType() == figure.GetType() && item.Side == figure.Side)
                 {
                     sameExist = true;
-                    position = _boxOfFigures.IndexOf(figure);
+                    position = BoxOfFigures.IndexOf(figure);
                 }
             }
 
@@ -89,20 +88,22 @@ namespace Task3.Boxes
             }
             else
             {
-                Console.WriteLine($"The list has equivalent figure: {_boxOfFigures[position]}, with side: {_boxOfFigures[position].Side}");
+                Console.WriteLine(
+                    $"The list has equivalent figure: {BoxOfFigures[position]}, " +
+                    $"with side: {BoxOfFigures[position].Side}");
             }
         }
 
         public void AmountFigures()
         {
-            Console.WriteLine(_boxOfFigures.Count);
+            Console.WriteLine(BoxOfFigures.Count);
         }
 
         public void PerimeterAllFigures()
         {
             double perimeter = 0;
 
-            foreach (var figure in _boxOfFigures)
+            foreach (var figure in BoxOfFigures)
             {
                 perimeter += figure.Perimeter;
             }
@@ -114,7 +115,7 @@ namespace Task3.Boxes
         {
             double area = 0;
 
-            foreach (var figure in _boxOfFigures)
+            foreach (var figure in BoxOfFigures)
             {
                 area += figure.Area;
             }
@@ -124,27 +125,23 @@ namespace Task3.Boxes
 
         public void TakeOutAllCircles()
         {
-            for (int i = 0; i < _boxOfFigures.Count; i++)
+            for (int index = 0; index < BoxOfFigures.Count; index++)
             {
-                if (_boxOfFigures[i].GetType() == typeof(FilmCircle) ||
-                    _boxOfFigures[i].GetType() == typeof(PaperCircle) ||
-                    _boxOfFigures[i].GetType() == typeof(PlasticCircle))
+                if (IsTypeCircle.CheckType(BoxOfFigures[index].GetType()))
                 {
-                    _boxOfFigures.Remove(_boxOfFigures[i]);
-                    i--;
+                    BoxOfFigures.Remove(BoxOfFigures[index]);
+                    index--;
                 }
             }
         }
 
         public void TakeOutAllFilmFigures()
         {
-            for (int i = 0; i < _boxOfFigures.Count; i++)
+            for (int i = 0; i < BoxOfFigures.Count; i++)
             {
-                if (_boxOfFigures[i].GetType() == typeof(FilmCircle) ||
-                    _boxOfFigures[i].GetType() == typeof(FilmEquilateralTriangle) ||
-                    _boxOfFigures[i].GetType() == typeof(FilmSquare))
+                if (IsTypeFilm.CheckType(this.GetType()))
                 {
-                    _boxOfFigures.Remove(_boxOfFigures[i]);
+                    BoxOfFigures.Remove(BoxOfFigures[i]);
                     i--;
                 }
             }
@@ -152,14 +149,12 @@ namespace Task3.Boxes
 
         public void TakeOutAllPlasticClearFigures()
         {
-            for (int i = 0; i < _boxOfFigures.Count; i++)
+            for (int i = 0; i < BoxOfFigures.Count; i++)
             {
-                if ((_boxOfFigures[i].GetType() == typeof(PlasticCircle) ||
-                    _boxOfFigures[i].GetType() == typeof(PlasticEquilateralTriangle) ||
-                    _boxOfFigures[i].GetType() == typeof(PlasticSquare)) &&
-                    _boxOfFigures[i].ColorFigure == Color.WithoutColor)
+                if (IsTypePlastic.CheckType(this.GetType()) &&
+                    BoxOfFigures[i].ColorFigure == Color.WithoutColor)
                 {
-                    _boxOfFigures.Remove(_boxOfFigures[i]);
+                    BoxOfFigures.Remove(BoxOfFigures[i]);
                     i--;
                 }
             }

@@ -8,6 +8,11 @@ namespace Task3.Figures
 {
     public class PlasticCircle : Figure, IPlastic
     {
+        public PlasticCircle()
+        {
+
+        }
+
         public PlasticCircle(double radius)
         {
             Side = radius;

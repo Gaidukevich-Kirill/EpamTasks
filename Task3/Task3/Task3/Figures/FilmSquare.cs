@@ -8,6 +8,11 @@ namespace Task3.Figures
 {
     public class FilmSquare : Figure, IFilm
     {
+        public FilmSquare()
+        {
+
+        }
+
         public FilmSquare(double side)
         {
             Side = side;

@@ -8,11 +8,16 @@ namespace Task3.Figures
 {
     public class FilmCircle : Figure, IFilm
     {
+        public FilmCircle()
+        {
+
+        }
+
         public FilmCircle(double radius)
         {
             Side = radius;
         }
-        
+
         public FilmCircle(ref FilmEquilateralTriangle triangle, double side)
         {
             if (side <= triangle.Side / (2 * Math.Sqrt(3)))

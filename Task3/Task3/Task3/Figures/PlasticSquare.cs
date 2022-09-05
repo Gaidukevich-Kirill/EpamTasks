@@ -8,6 +8,11 @@ namespace Task3.Figures
 {
     public class PlasticSquare : Figure, IPlastic
     {
+        public PlasticSquare()
+        {
+
+        }
+
         public PlasticSquare(double side)
         {
             Side = side;

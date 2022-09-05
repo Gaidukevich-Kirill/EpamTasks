@@ -8,6 +8,11 @@ namespace Task3.Figures
 {
     public class PaperEquilateralTriangle : Figure, IPaper
     {
+        public PaperEquilateralTriangle()
+        {
+
+        }
+
         public PaperEquilateralTriangle(double side)
         {
             Side = side;
