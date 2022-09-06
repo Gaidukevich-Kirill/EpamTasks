@@ -72,8 +72,11 @@ namespace Task3
             var path = @"E:\prg\Task3\Task3\test.xml";
 
             IBoxFileWorker fileWorker = new XmlBoxFileWorker();
-            //fileWorker.SaveFileXml(path, box1);
-
+            //fileWorker.SaveAllFiguresFileXml(path, box1);
+            //fileWorker.SaveFilmFiguresFileXml(path, box1);
+            //var box1111 = fileWorker.LoadFiguresFileXml(path);
+            //fileWorker.SaveAllFiguresFileSw(path, box1);
+            var box111 = fileWorker.LoadFiguresFileSw(path);
         }
     }
 }
