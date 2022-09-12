@@ -8,19 +8,40 @@ namespace ChatClient
 {
     internal class Program
     {
-        static string userName;
-        private const string address = "127.0.0.1";
-        private const int port = 8888;
+        private static string _userName;
+        public const string Address = "127.0.0.1";
+        public const int Port = 8888;
 
         static void Main(string[] args)
         {
-            IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Parse(address), port);
-            Socket socket = new Socket(
-                AddressFamily.InterNetwork, 
-                SocketType.Stream, 
-                ProtocolType.Tcp);
+            Console.Write("Input your name: ");
+            _userName = Console.ReadLine();
+            TcpClient client = null;
 
-            socket.Connect(ipEndPoint);
+            try
+            {
+                client = new TcpClient(Address, Port);
+                var stream = client.GetStream();
+
+                while (true)
+                {
+                    Console.Write($"{_userName}: ");
+                    var message = Console.ReadLine();
+
+                    if (message == null)
+                    {
+                        throw new ArgumentNullException();
+                    }
+
+                    byte[] data = Encoding.UTF8.GetBytes(message);
+                    stream.Write(data, 0, data.Length);
+                }
+
+            }
+            catch
+            {
+                throw new Exception();
+            }
         }
     }
 }
