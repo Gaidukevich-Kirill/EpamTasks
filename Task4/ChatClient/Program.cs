@@ -8,37 +8,63 @@ namespace ChatClient
 {
     internal class Program
     {
+        static string userName;
         public const string Address = "127.0.0.1";
         public const int Port = 8888;
+        static TcpClient client;
+        static NetworkStream stream;
 
         static void Main(string[] args)
         {
-            Console.Write("Input your name: ");
-            var userName = Console.ReadLine();
-            TcpClient client = null;
+            Console.Write("Write your name: ");
+            userName = Console.ReadLine();
+            client = new TcpClient();
 
             try
             {
-                client = new TcpClient(Address, Port);
-                var stream = client.GetStream();
+                client.Connect(Address, Port);
+                stream = client.GetStream();
 
-                while (true)
+                var message = userName;
+                var data = Encoding.Unicode.GetBytes(message);
+                stream.Write(data, 0, data.Length);
+
+                //Creating new thread for getting data
+                var receiveThread = new Thread(new ThreadStart(ReceiveMessage));
+                receiveThread.Start();
+
+                Console.WriteLine($"Welcome, {userName}");
+                SendMessage();
+            }
+            catch (Exception exception)
+            {
+                throw new Exception(exception.Message);
+            }
+            finally
+            {
+                Disconnect();
+            }
+        }
+
+        static void SendMessage()
+        {
+            while (true)
+            {
+                Console.Write("Write cyrillic message: ");
+                var message = Console.ReadLine();
+                var data = Encoding.Unicode.GetBytes(message);
+
+                stream.Write(data, 0, data.Length);
+            }
+        }
+
+        static void ReceiveMessage()
+        {
+            while (true)
+            {
+                try
                 {
-                    Console.Write($"{userName}: ");
-                    var message = Console.ReadLine();
-                    message = String.Format($"{userName}: {message}");
-
-                    if (message == null)
-                    {
-                        throw new ArgumentNullException();
-                    }
-
-                    byte[] data = Encoding.Unicode.GetBytes(message);
-                    stream.Write(data, 0, data.Length);
-                    stream.Flush();
-
-                    //Get answer
-                    data = new byte[2];
+                    var data = new byte[64];
                     var stringBuilder = new StringBuilder();
                     var bytes = 0;
 
@@ -46,21 +72,28 @@ namespace ChatClient
                     {
                         bytes = stream.Read(data, 0, data.Length);
                         stringBuilder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-                    } while (stream.DataAvailable);
+                    } 
+                    while (stream.DataAvailable);
 
-                    message = stringBuilder.ToString();
-                    Console.WriteLine($"Server: {message}");
+                    var message = stringBuilder.ToString();
+                    Console.WriteLine(message);
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine("Connection is interrupted");
+                    Console.ReadLine();
+                    Console.WriteLine(exception.Message);
                 }
             }
-            catch
-            {
-                throw new Exception();
-            }
-            finally
-            {
-                if (client != null)
-                    client.Close();
-            }
+        }
+
+        static void Disconnect()
+        {
+            if (stream != null)
+                stream.Close();
+            if (client != null)
+                client.Close();
+            Environment.Exit(0);
         }
     }
 }
