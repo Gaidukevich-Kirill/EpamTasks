@@ -8,21 +8,18 @@ namespace ChatServer
 {
     internal class Program
     {
-        static ServerObject server;
-        static Thread listenThread;
-
         static void Main(string[] args)
         {
+            ServerObject server = null;
             try
             {
                 server = new ServerObject();
-                listenThread = new Thread(new ThreadStart(server.Listen));
+                var listenThread = new Thread(new ThreadStart(server.Listen));
                 listenThread.Start();
-
             }
             catch (Exception exception)
             {
-                server.Disconnect();
+                server?.Disconnect();
                 Console.WriteLine(exception.Message);
             }
         }

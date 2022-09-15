@@ -11,7 +11,7 @@ namespace ChatServer
 
         public NetworkStream Stream { get; set; }
 
-        public List<string> userMessagess = new List<string>();
+        public List<string> UserMessagess = new List<string>();
 
         public readonly TcpClient Client;
 
@@ -34,7 +34,8 @@ namespace ChatServer
                 Stream = Client.GetStream();
                 var message = GetMessage();
                 UserName = message;
-                message = UserName + "joined in the chat";
+                message = UserName + " joined in the chat";
+                Console.WriteLine(message);
 
                 while (true)
                 {
@@ -42,16 +43,16 @@ namespace ChatServer
                     {
                         message = GetMessage();
                         message = TranslitDictionary.ConvertToLatin(message);
-                        userMessagess.Add(message);
+                        UserMessagess.Add(message);
                         message = String.Format($"{UserName}: {message}");
                         Console.WriteLine(message);
-                        Server.BroadcastMessage(message, this.Id);
+                        Server.MessageHandler(message, Id);
                     }
                     catch
                     {
                         message = String.Format($"{UserName} left the chat");
                         Console.WriteLine(message);
-                        Server.BroadcastMessage(message, this.Id);
+                        Server.MessageHandler(message, Id);
                         break;
                     }
                 }

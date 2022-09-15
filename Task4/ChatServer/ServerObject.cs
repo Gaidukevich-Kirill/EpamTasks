@@ -10,14 +10,32 @@ namespace ChatServer
 {
     public class ServerObject
     {
-        //Server for listening
-        private static TcpListener _tcpListener;
+        private static TcpListener _tcpListener; //Server for listening
+        private List<ClientObject> _clients = new List<ClientObject>(); //List of all clients that connecting
         
-        //List of all clients that connecting
-        private List<ClientObject> _clients = new List<ClientObject>();
+        private const string AddressString = "127.0.0.1";
+        private const int Port = 8888;
 
-        public const string AddressString = "127.0.0.1";
-        public const int Port = 8888;
+        public delegate void BroadcastNotify(string message, string id);
+
+        public event BroadcastNotify MessageArrivals;
+
+        public ServerObject()
+        {
+            MessageArrivals += (message, id) =>
+            {
+                var data = Encoding.Unicode.GetBytes(message);
+
+                //Sending message to other users
+                foreach (var client in _clients)
+                {
+                    if (client.Id != id)
+                    {
+                        client.Stream.Write(data, 0, data.Length);
+                    }
+                }
+            };
+        }
 
         public void AddConnection(ClientObject client)
         {
@@ -52,21 +70,13 @@ namespace ChatServer
             catch (Exception exception)
             {
                 Console.WriteLine(exception.Message);
-                Disconnect();
-            }
+                Disconnect();    
+            } 
         }
 
-        public void BroadcastMessage(string message, string id)
+        public void MessageHandler(string message, string id)
         {
-            var data = Encoding.Unicode.GetBytes(message);
-
-            foreach (var client in _clients)
-            {
-                if (client.Id != id)
-                {
-                    client.Stream.Write(data, 0, data.Length);
-                }
-            }
+            MessageArrivals?.Invoke(message, id);
         }
 
         public void Disconnect()

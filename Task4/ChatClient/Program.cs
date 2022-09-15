@@ -80,6 +80,7 @@ namespace ChatClient
                 }
                 catch (Exception exception)
                 {
+                    Console.WriteLine();
                     Console.WriteLine("Connection is interrupted");
                     Console.ReadLine();
                     Console.WriteLine(exception.Message);
