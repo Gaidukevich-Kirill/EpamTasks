@@ -4,15 +4,17 @@ using System.Text;
 
 namespace Task5
 {
-    public class TreeNode <T> where T : IComparable
+    public class TreeNode<TNode> where TNode : IComparable<TNode>
     {
-        private Tree<T> _tree;
-        private TreeNode<T> _left;
-        private TreeNode<T> _right;
+        Tree<TNode> _tree;
 
-        #region Constructor
+        TreeNode<TNode> _left; // левый  потомок
+        TreeNode<TNode> _right; // правый потомок
 
-        public TreeNode(T value, TreeNode<T> parent, Tree<T> tree)
+
+        #region Конструктор
+
+        public TreeNode(TNode value, TreeNode<TNode> parent, Tree<TNode> tree)
         {
             Value = value;
             Parent = parent;
@@ -21,53 +23,54 @@ namespace Task5
 
         #endregion
 
-        #region Properties
+        #region Свойства
 
-        public T Value { get; set; } //Value of current node
-
-        public TreeNode<T> Parent { get; set; } //Parent node
-
-        public TreeNode<T> Left
+        public TreeNode<TNode> Left
         {
-            get
-            {
-                return _left;
-            }
+            get { return _left; }
 
-            set
+            internal set
             {
                 _left = value;
 
                 if (_left != null)
                 {
-                    _left.Parent = this;
+                    _left.Parent = this; // установка указателя на родительский элемент
                 }
             }
         }
 
-        public TreeNode<T> Right
+        public TreeNode<TNode> Right
         {
-            get
-            {
-                return _right;
-            }
+            get { return _right; }
 
-            set
+            internal set
             {
                 _right = value;
 
                 if (_right != null)
                 {
-                    _right.Parent = this;
+                    _right.Parent = this; // установка указателя на родительский элемент
                 }
             }
         }
+
+        // Указатель на родительский узел
+
+        public TreeNode<TNode> Parent { get; internal set; }
+
+        // значение текущего узла 
+
+        public TNode Value { get; private set; }
+
+        // Сравнивает текущий узел по указаному значению, возвращет 1, если значение экземпляра больше переданного значения,  
+        // возвращает -1, когда значение экземпляра меньше переданого значения, 0 - когда они равны.     
 
         #endregion
 
         #region CompareTo
 
-        public int CompareTo(T other)
+        public int CompareTo(TNode other)
         {
             return Value.CompareTo(other);
         }
@@ -76,7 +79,7 @@ namespace Task5
 
         #region Balance
 
-        public void Balance()
+        internal void Balance()
         {
             if (State == TreeState.RightHeavy)
             {
@@ -84,6 +87,7 @@ namespace Task5
                 {
                     LeftRightRotation();
                 }
+
                 else
                 {
                     LeftRotation();
@@ -102,15 +106,7 @@ namespace Task5
             }
         }
 
-        public int BalanceFactor
-        {
-            get
-            {
-                return RightHeight - LeftHeight;
-            }
-        }
-
-        private int MaxChildHeight(TreeNode<T> node)
+        private int MaxChildHeight(TreeNode<TNode> node)
         {
             if (node != null)
             {
@@ -122,18 +118,12 @@ namespace Task5
 
         private int LeftHeight
         {
-            get
-            {
-                return MaxChildHeight(Left);
-            }
+            get { return MaxChildHeight(Left); }
         }
 
         private int RightHeight
         {
-            get
-            {
-                return MaxChildHeight(Right);
-            }
+            get { return MaxChildHeight(Right); }
         }
 
         private TreeState State
@@ -154,7 +144,13 @@ namespace Task5
             }
         }
 
-        private enum TreeState
+
+        private int BalanceFactor
+        {
+            get { return RightHeight - LeftHeight; }
+        }
+
+        enum TreeState
         {
             Balanced,
             LeftHeavy,
@@ -167,16 +163,26 @@ namespace Task5
 
         private void LeftRotation()
         {
-            //   1(this)              2
-            //    \                  / \
-            //      2               1   3
-            //       \
-            //        3
-            var newRoot = Right;
+
+            // До
+            //     12(this)     
+            //      \     
+            //       15     
+            //        \     
+            //         25     
+            //     
+            // После     
+            //       15     
+            //      / \     
+            //     12  25  
+
+            // Сделать правого потомка новым корнем дерева.
+            TreeNode<TNode> newRoot = Right;
             ReplaceRoot(newRoot);
 
+            // Поставить на место правого потомка - левого потомка нового корня.    
             Right = newRoot.Left;
-
+            // Сделать текущий узел - левым потомком нового корня.    
             newRoot.Left = this;
         }
 
@@ -186,17 +192,26 @@ namespace Task5
 
         private void RightRotation()
         {
-            //  (this)1      2
-            //       /      / \
-            //      2      1   3
-            //     /
-            //    3
+            // Было
+            //     c (this)     
+            //    /     
+            //   b     
+            //  /     
+            // a     
+            //     
+            // Стало    
+            //       b     
+            //      / \     
+            //     a   c  
 
-            var newRoot = Left;
+            // Левый узел текущего элемента становится новым корнем
+            TreeNode<TNode> newRoot = Left;
             ReplaceRoot(newRoot);
 
+            // Перемещение правого потомка нового корня на место левого потомка старого корня
             Left = newRoot.Right;
 
+            // Правым потомком нового корня, становится старый корень.     
             newRoot.Right = this;
         }
 
@@ -204,10 +219,10 @@ namespace Task5
 
         #region LeftRightRotation
 
-        public void LeftRightRotation()
+        private void LeftRightRotation()
         {
             Right.RightRotation();
-            Left.RightRotation();
+            LeftRotation();
         }
 
         #endregion
@@ -222,9 +237,9 @@ namespace Task5
 
         #endregion
 
-        #region ReplaceRoot
+        #region Перемещение корня
 
-        private void ReplaceRoot(TreeNode<T> newRoot)
+        private void ReplaceRoot(TreeNode<TNode> newRoot)
         {
             if (this.Parent != null)
             {
@@ -236,10 +251,14 @@ namespace Task5
                 {
                     this.Parent.Right = newRoot;
                 }
-
-                newRoot.Parent = this.Parent;
-                this.Parent = newRoot;
             }
+            else
+            {
+                _tree.Head = newRoot;
+            }
+
+            newRoot.Parent = this.Parent;
+            this.Parent = newRoot;
         }
 
         #endregion
