@@ -4,40 +4,36 @@ using System.Text;
 
 namespace Task5
 {
-    public class Tree<T> : IEnumerable<T>
+    public class Tree<T> : IEnumerable<T> 
         where T : IComparable<T>
-
     {
-        // Свойство для корня дерева
-
+        //Root of tree
         public TreeNode<T> Head
         {
             get;
             internal set;
         }
 
-        #region Количество узлов дерева
+        #region Count of tree nodes
         public int Count
         {
             get;
-            private set;
+            set;
         }
         #endregion
 
         #region Метод Add
 
-        // Метод добавлет новый узел
-
+        // Add new node
         public void Add(T value)
         {
-            // Вариант 1:  Дерево пустое - создание корня дерева      
+            // If root of tree == null, create new root
             if (Head == null)
             {
                 Head = new TreeNode<T>(value, null, this);
             }
 
-            // Вариант 2: Дерево не пустое - найти место для добавление нового узла.
-
+            // If root of tree != null, find place for new node
             else
             {
                 AddTo(Head, value);
@@ -45,17 +41,11 @@ namespace Task5
 
             Count++;
         }
-
-        // Алгоритм рекурсивного добавления нового узла в дерево.
-
+        
         private void AddTo(TreeNode<T> node, T value)
         {
-            // Вариант 1: Добавление нового узла в дерево. Значение добавлемого узла меньше чем значение текущего узла.      
-
             if (value.CompareTo(node.Value) < 0)
             {
-                //Создание левого узла, если его нет.
-
                 if (node.Left == null)
                 {
                     node.Left = new TreeNode<T>(value, node, this);
@@ -63,45 +53,32 @@ namespace Task5
 
                 else
                 {
-                    // Переходим к следующему левому узлу
                     AddTo(node.Left, value);
                 }
             }
-            // Вариант 2: Добавлемое значение больше или равно текущему значению.
-
+            
             else
             {
-                //Создание правого узла, если его нет.         
                 if (node.Right == null)
                 {
                     node.Right = new TreeNode<T>(value, node, this);
                 }
                 else
                 {
-                    // Переход к следующему правому узлу.             
                     AddTo(node.Right, value);
                 }
             }
-            //node.Balance();
         }
 
         #endregion
 
+        /*
         #region Метод Contains
 
         public bool Contains(T value)
         {
             return Find(value) != null;
         }
-
-        /// <summary> 
-        /// Находит и возвращает первый узел который содержит искомое значение.
-        /// Если значение не найдено, возвращает null. 
-        /// Так же возвращает родительский узел.
-        /// </summary> /// 
-        /// <param name="value">Значение поиска</param> 
-        /// <param name="parent">Родительский элемент для найденного значения/// </param> 
-        /// <returns> Найденный узел (или ноль) /// </returns> 
 
         private TreeNode<T> Find(T value)
         {
@@ -301,34 +278,26 @@ namespace Task5
         }
 
         #endregion
+        */
 
-        #region Итераторы
+        #region Itterator
 
         public IEnumerator<T> InOrderTraversal()
         {
-
-            // рекурсивное перемищение по дереву
-
-            if (Head != null) // существует ли корень дерева
+            if (Head != null) 
             {
 
-                Stack<TreeNode<T>> stack = new Stack<TreeNode<T>>();
-                TreeNode<T> current = Head;
+                var stack = new Stack<TreeNode<T>>();
+                var current = Head;
 
-                // при рекурсивном перемещении по дереву, нужно указывать какой потомок будет слудеющим (правый или левый)
+                var goLeftNext = true;
 
-                bool goLeftNext = true;
-
-                // Начинаем с помещения корня в стек
                 stack.Push(current);
 
                 while (stack.Count > 0)
                 {
-                    // Если перемещаемся влево ... 
                     if (goLeftNext)
                     {
-                        // Перемещение всех левых потомков в стек.
-
                         while (current.Left != null)
                         {
                             stack.Push(current);
@@ -338,20 +307,14 @@ namespace Task5
 
                     yield return current.Value;
 
-                    // Если перемещаемся вправо 
-
                     if (current.Right != null)
                     {
                         current = current.Right;
-
-                        // Идинажды перемещаемся вправо, после чего опять идем влево. 
 
                         goLeftNext = true;
                     }
                     else
                     {
-                        // Если перейти вправо нельзя - извлекаем родительский узел. 
-
                         current = stack.Pop();
                         goLeftNext = false;
                     }
@@ -366,13 +329,9 @@ namespace Task5
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-
             return GetEnumerator();
-
         }
 
         #endregion
-
-
     }
 }

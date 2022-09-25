@@ -1,4 +1,5 @@
 ﻿using System;
+using Task5.FileManagment;
 
 namespace Task5
 {
@@ -43,30 +44,25 @@ namespace Task5
 
             #endregion
 
-            /*var Oak = new Tree<int>();
-                          //                             10                              10                                             
-            Oak.Add(10);  //                            /   \                           /   \
-            Oak.Add(3);   //                           /     \                         /     \
-            Oak.Add(2);   //                          3      12      ====>            3       15
-            Oak.Add(4);   //                         / \     / \                     / \      / \
-            Oak.Add(12);  //                        2   4  null 15                  2   4    12  25
-            Oak.Add(15);  //                                      \              
-            Oak.Add(11);  //                                       25
-            Oak.Add(25);  //
-
-            foreach (var item in Oak)
+            var tree = new Tree<Student>
             {
-                Console.WriteLine(item);
-            }*/
+                student1,
+                student2,
+                student3
+            };
 
-            var Oak = new Tree<Student>();
-            
-            Oak.Add(student1);
-            Oak.Add(student2);
-            Oak.Add(student3);
+            Console.WriteLine(tree.Head.Value.LastName);
+            Console.WriteLine("--------------------------");
 
-            Oak.Head.Right.CompareTo(Oak.Head.Value);
+            tree.Head.Balance();
 
+            Console.WriteLine(tree.Head.Value.LastName);
+            Console.WriteLine(tree.Head.Left.Value.LastName);
+            Console.WriteLine(tree.Head.Right.Value.LastName);
+
+            var path = @"E:\Portfolio\Task5\file.xml";
+            var fileWorker = new XmlTreeWorker();
+            fileWorker.SaveTreeFileXml(path, tree);
         }
     }
 }
