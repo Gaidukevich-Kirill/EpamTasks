@@ -7,17 +7,17 @@ namespace ChatServer
 {
     public class ClientObject
     {
-        public string Id { get; set; }
+        public string Id { get; private set; }
 
-        public NetworkStream Stream { get; set; }
+        public NetworkStream Stream { get; private set; }
 
-        public List<string> UserMessagess = new List<string>();
+        public List<string> UserMessages = new List<string>();
 
         public readonly TcpClient Client;
 
         public readonly ServerObject Server;
 
-        public string UserName;
+        public string UserName { get; private set; }
 
         public ClientObject(TcpClient client, ServerObject server)
         {
@@ -43,7 +43,7 @@ namespace ChatServer
                     {
                         message = GetMessage();
                         message = TranslitDictionary.ConvertToLatin(message);
-                        UserMessagess.Add(message);
+                        UserMessages.Add(message);
                         message = String.Format($"{UserName}: {message}");
                         Console.WriteLine(message);
                         Server.MessageHandler(message, Id);
