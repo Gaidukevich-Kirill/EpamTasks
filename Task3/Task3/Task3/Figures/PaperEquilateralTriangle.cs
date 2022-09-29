@@ -18,46 +18,36 @@ namespace Task3.Figures
             Side = side;
         }
 
+        private bool AbilityTriangleFromCircle(PaperCircle circle, double side)
+        {
+            return side > circle.Side * Math.Sqrt(3);
+        }
+
+        private bool AbilityTriangleFromSquare(PaperSquare square, double side)
+        {
+            return side * Math.Sqrt(3) / 2 > square.Side * Math.Sqrt(2);
+        }
+
         public PaperEquilateralTriangle(ref PaperCircle circle, double side)
         {
-            if (side <= circle.Side * Math.Sqrt(3))
-            {
-                Side = side;
-                circle = null;
-            }
-            else
-            {
+            if (AbilityTriangleFromCircle(circle, side))
                 throw new CarveException("It is impossible to carve this figure.");
-            }
+            
+            Side = side;
+            circle = null;
         }
 
         public PaperEquilateralTriangle(ref PaperSquare square, double side)
         {
-            if (side * Math.Sqrt(3) / 2 <= square.Side * Math.Sqrt(2))
-            {
-                Side = side;
-                square = null;
-            }
-            else
-            {
+            if (AbilityTriangleFromSquare(square, side))
                 throw new CarveException("It is impossible to carve this figure.");
-            }
+
+            Side = side;
+            square = null;
         }
 
-        public override double Perimeter
-        {
-            get
-            {
-                return Side * 3;
-            }
-        }
+        public override double Perimeter => Side * 3;
 
-        public override double Area
-        {
-            get
-            {
-                return Side * Side * Math.Sqrt(3) / 4;
-            }
-        }
+        public override double Area => Side * Side * Math.Sqrt(3) / 4;
     }
 }

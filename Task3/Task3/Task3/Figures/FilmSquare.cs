@@ -18,46 +18,36 @@ namespace Task3.Figures
             Side = side;
         }
 
+        private bool AbilitySquareFromTriangle(FilmEquilateralTriangle triangle, double side)
+        {
+            return side > triangle.Side / (1 + 2 / Math.Sqrt(3));
+        }
+
+        private bool AbilitySquareFromCircle(FilmCircle circle, double side)
+        {
+            return side * Math.Sqrt(2) > circle.Side * 2;
+        }
+
         public FilmSquare(ref FilmEquilateralTriangle triangle, double side)
         {
-            if (side <= triangle.Side / (1 + 2 / Math.Sqrt(3)))
-            {
-                Side = side;
-                triangle = null;
-            }
-            else
-            {
+            if (AbilitySquareFromTriangle(triangle, side))
                 throw new CarveException("It is impossible to carve this figure.");
-            }
+
+            Side = side;
+            triangle = null;
         }
 
         public FilmSquare(ref FilmCircle circle, double side)
         {
-            if (side * Math.Sqrt(2) <= circle.Side * 2)
-            {
-                Side = side;
-                circle = null;
-            }
-            else
-            {
+            if (AbilitySquareFromCircle(circle, side))
                 throw new CarveException("It is impossible to carve this figure.");
-            }
+
+            Side = side;
+            circle = null;
         }
 
-        public override double Perimeter
-        {
-            get
-            {
-                return Side * 4;
-            }
-        }
+        public override double Perimeter => Side * 4;
 
-        public override double Area
-        {
-            get
-            {
-                return Side * Side;
-            }
-        }
+        public override double Area => Side * Side;
     }
 }

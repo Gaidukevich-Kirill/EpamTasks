@@ -35,25 +35,16 @@ namespace Task3.Figures
                 throw new PaintException("Cannot paint this figure.");
             }
 
-            if (IsTypePaper.CheckType(this.GetType()))
+            if (IsTypePaper.CheckType(this.GetType()) && this.ColorFigure != Color.WithoutColor)
             {
-                if (this.ColorFigure != Color.WithoutColor)
-                {
-                    throw new PaintException("Cannot paint this figure.");
-                }
+                throw new PaintException("Cannot paint this figure.");
             }
 
             this.ColorFigure = color;
         }
 
-        public abstract double Perimeter
-        {
-            get;
-        }
+        public abstract double Perimeter { get; }
 
-        public abstract double Area
-        {
-            get;
-        }
+        public abstract double Area { get; }
     }
 }

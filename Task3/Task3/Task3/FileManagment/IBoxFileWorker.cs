@@ -7,23 +7,11 @@ namespace Task3.FileManagment
 {
     public interface IBoxFileWorker
     {
-        void SaveAllFiguresFileXml(string path, Box box);
-
-        void SaveFilmFiguresFileXml(string path, Box box);
-
-        void SavePaperFigureFileXml(string path, Box box);
-
-        void SavePlasticFigureFileXml(string path, Box box);
-
+        void SaveFiguresFileXml(string path, Box box, Type type = null);
+        
         Box LoadFiguresFileXml(string path);
 
-        void SaveAllFiguresFileSw(string path, Box box);
-
-        void SaveFilmFiguresFileSw(string path, Box box);
-
-        void SavePaperFigureFileSw(string path, Box box);
-
-        void SavePlasticFigureFileSw(string path, Box box);
+        void SaveFiguresFileSw(string path, Box box, Type type = null);
 
         Box LoadFiguresFileSw(string path);
     }

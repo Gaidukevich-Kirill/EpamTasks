@@ -1,22 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <Box xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <BoxOfFigures>
-    <Figure xsi:type="FilmEquilateralTriangle">
-      <Side>5</Side>
-      <ColorFigure>WithoutColor</ColorFigure>
-    </Figure>
-    <Figure xsi:type="FilmEquilateralTriangle">
-      <Side>2</Side>
-      <ColorFigure>WithoutColor</ColorFigure>
-    </Figure>
-    <Figure xsi:type="PlasticSquare">
-      <Side>8</Side>
-      <ColorFigure>WithoutColor</ColorFigure>
-    </Figure>
-    <Figure xsi:type="FilmEquilateralTriangle">
-      <Side>6</Side>
-      <ColorFigure>WithoutColor</ColorFigure>
-    </Figure>
     <Figure xsi:type="FilmCircle">
       <Side>10</Side>
       <ColorFigure>WithoutColor</ColorFigure>
@@ -28,14 +12,6 @@
     <Figure xsi:type="FilmCircle">
       <Side>30</Side>
       <ColorFigure>WithoutColor</ColorFigure>
-    </Figure>
-    <Figure xsi:type="PlasticCircle">
-      <Side>10</Side>
-      <ColorFigure>Red</ColorFigure>
-    </Figure>
-    <Figure xsi:type="PlasticCircle">
-      <Side>11</Side>
-      <ColorFigure>Green</ColorFigure>
     </Figure>
   </BoxOfFigures>
 </Box>

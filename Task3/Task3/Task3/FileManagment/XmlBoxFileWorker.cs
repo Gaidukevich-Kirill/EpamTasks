@@ -13,79 +13,40 @@ namespace Task3.FileManagment
     public class XmlBoxFileWorker : IBoxFileWorker
     {
         //----------------------------------xml
-        public void SaveAllFiguresFileXml(string path, Box box)
+
+        public void SaveFiguresFileXml(string path, Box box, Type type = null)
         {
             var xmlSerializer = new XmlSerializer(typeof(Box));
 
-            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+            if (type == null)
             {
-                xmlSerializer.Serialize(fs, box);
-
-                Console.WriteLine("Object has been serialized");
-            }
-        }
-
-        public void SaveFilmFiguresFileXml(string path, Box box)
-        {
-            var boxFilmFigures = new Box();
-            var xmlSerializer = new XmlSerializer(typeof(Box));
-
-            foreach (var  figure in box.BoxOfFigures)
-            {
-                if (IsTypeFilm.CheckType(figure.GetType()))
+                using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
                 {
-                    boxFilmFigures.AddFigure(figure);
+                    xmlSerializer.Serialize(fs, box);
+
+                    Console.WriteLine("Object has been serialized");
                 }
+                
+                return;
             }
 
-            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
-            {
-                xmlSerializer.Serialize(fs, boxFilmFigures);
-
-                Console.WriteLine("Object has been serialized");
-            }
-        }
-
-        public void SavePaperFigureFileXml(string path, Box box)
-        {
-            var boxPaperFigures = new Box();
-            var xmlSerializer = new XmlSerializer(typeof(Box));
-
+            var boxFiguresForFile = new Box();
+            
             foreach (var figure in box.BoxOfFigures)
             {
-                if (IsTypePaper.CheckType(figure.GetType()))
+                if (type == figure.GetType())
                 {
-                    boxPaperFigures.AddFigure(figure);
+                    boxFiguresForFile.AddFigure(figure);
                 }
             }
 
             using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
             {
-                xmlSerializer.Serialize(fs, boxPaperFigures);
+                xmlSerializer.Serialize(fs, boxFiguresForFile);
 
                 Console.WriteLine("Object has been serialized");
             }
-        }
 
-        public void SavePlasticFigureFileXml(string path, Box box)
-        {
-            var boxPlasticBox = new Box();
-            var xmlSerializer = new XmlSerializer(typeof(Box));
-
-            foreach (var figure in box.BoxOfFigures)
-            {
-                if (IsTypePlastic.CheckType(figure.GetType()))
-                {
-                    boxPlasticBox.AddFigure(figure);
-                }
-            }
-
-            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
-            {
-                xmlSerializer.Serialize(fs, boxPlasticBox);
-
-                Console.WriteLine("Object has been serialized");
-            }
         }
 
         public Box LoadFiguresFileXml(string path)
@@ -104,67 +65,30 @@ namespace Task3.FileManagment
         }
 
         //---------------------------------------StreamWriter
-
-        public void SaveAllFiguresFileSw(string path, Box box)
+        public void SaveFiguresFileSw(string path, Box box, Type type = null)
         {
-            XmlSerializer mySerializer = new XmlSerializer(typeof(Box));
-            
-            StreamWriter myWriter = new StreamWriter(path);
-            mySerializer.Serialize(myWriter, box);
-            myWriter.Close();
-        }
-
-        public void SaveFilmFiguresFileSw(string path, Box box)
-        {
-            var boxFilmFigures = new Box();
             var mySerializer = new XmlSerializer(typeof(Box));
+            var myWriter = new StreamWriter(path);
 
+            if (type == null)
+            {
+
+                mySerializer.Serialize(myWriter, box);
+                myWriter.Close();
+
+                return;
+            }
+
+            var boxFilmFigures = new Box();
             foreach (var figure in box.BoxOfFigures)
             {
-                if (IsTypeFilm.CheckType(figure.GetType()))
+                if (type == figure.GetType())
                 {
                     boxFilmFigures.AddFigure(figure);
                 }
             }
 
-            StreamWriter myWriter = new StreamWriter(path);
             mySerializer.Serialize(myWriter, boxFilmFigures);
-            myWriter.Close();
-        }
-
-        public void SavePaperFigureFileSw(string path, Box box)
-        {
-            var boxPaperFigures = new Box();
-            var mySerializer = new XmlSerializer(typeof(Box));
-
-            foreach (var figure in box.BoxOfFigures)
-            {
-                if (IsTypePaper.CheckType(figure.GetType()))
-                {
-                    boxPaperFigures.AddFigure(figure);
-                }
-            }
-
-            StreamWriter myWriter = new StreamWriter(path);
-            mySerializer.Serialize(myWriter, boxPaperFigures);
-            myWriter.Close();
-        }
-
-        public void SavePlasticFigureFileSw(string path, Box box)
-        {
-            var boxPlasticFigures = new Box();
-            var mySerializer = new XmlSerializer(typeof(Box));
-
-            foreach (var figure in box.BoxOfFigures)
-            {
-                if (IsTypePlastic.CheckType(figure.GetType()))
-                {
-                    boxPlasticFigures.AddFigure(figure);
-                }
-            }
-
-            StreamWriter myWriter = new StreamWriter(path);
-            mySerializer.Serialize(myWriter, boxPlasticFigures);
             myWriter.Close();
         }
 

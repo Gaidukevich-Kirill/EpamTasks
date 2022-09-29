@@ -33,9 +33,11 @@ namespace Task3.Boxes
 
             foreach (var figure in BoxOfFigures)
             {
-                if (item.GetType() == figure.GetType() && item.Side == figure.Side)
+                if (item.GetType() == figure.GetType() &&
+                    item.Side == figure.Side &&
+                    item.Area == figure.Area)
                 {
-                    alreadyExist = BoxOfFigures.Contains(item);
+                    alreadyExist = false;
                 }
             }
 
@@ -43,10 +45,8 @@ namespace Task3.Boxes
             {
                 throw new AddException("This figure is already in the box");
             }
-            else
-            {
-                BoxOfFigures.Add(item);
-            }
+            
+            BoxOfFigures.Add(item);
         }
 
         public void CheckFigureByNumber(int number)
@@ -75,7 +75,9 @@ namespace Task3.Boxes
 
             foreach (var figure in BoxOfFigures)
             {
-                if (item.GetType() == figure.GetType() && item.Side == figure.Side)
+                if (item.GetType() == figure.GetType() && 
+                    item.Side == figure.Side &&
+                    item.Area == figure.Area)
                 {
                     sameExist = true;
                     position = BoxOfFigures.IndexOf(figure);
@@ -86,12 +88,10 @@ namespace Task3.Boxes
             {
                 throw new CompareException("Figure isn't found.");
             }
-            else
-            {
-                Console.WriteLine(
-                    $"The list has equivalent figure: {BoxOfFigures[position]}, " +
+
+            Console.WriteLine(
+                    $"The list has equivalent figure: {BoxOfFigures[position]}, " + 
                     $"with side: {BoxOfFigures[position].Side}");
-            }
         }
 
         public void AmountFigures()
