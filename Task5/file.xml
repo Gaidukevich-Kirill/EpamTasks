@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<ArrayOfStudent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Student>
+    <LastName>Gaidukevich</LastName>
+    <Test>
+      <Name>Test 1</Name>
+      <Time>2002-07-24T00:00:00</Time>
+      <Grade>8</Grade>
+    </Test>
+  </Student>
+  <Student>
+    <LastName>Stupen</LastName>
+    <Test>
+      <Name>Test 1</Name>
+      <Time>2002-07-25T00:00:00</Time>
+      <Grade>9</Grade>
+    </Test>
+  </Student>
+  <Student>
+    <LastName>Borodin</LastName>
+    <Test>
+      <Name>Test 2</Name>
+      <Time>2002-07-26T00:00:00</Time>
+      <Grade>10</Grade>
+    </Test>
+  </Student>
+</ArrayOfStudent>
