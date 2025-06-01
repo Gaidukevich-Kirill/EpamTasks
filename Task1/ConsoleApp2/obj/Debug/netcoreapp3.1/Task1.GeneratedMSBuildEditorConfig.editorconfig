@@ -1,3 +1,5 @@
 is_global = true
 build_property.RootNamespace = Task1
-build_property.ProjectDir = E:\prg\Task1\ConsoleApp2\
+build_property.ProjectDir = D:\Projects\EpamTasks\Task1\ConsoleApp2\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

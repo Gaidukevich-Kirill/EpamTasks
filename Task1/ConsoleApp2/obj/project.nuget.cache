@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "MF5G0EZ1SJqkkXGVNqK60mQ9M3nYCMokE+9/zKWcKfXm9ArjPDnDLuuIybaiFHbb3A84NGBeX9EvA5qJ93z9ng==",
+  "dgSpecHash": "slAlz5+iE6M=",
   "success": true,
-  "projectFilePath": "E:\\prg\\Task1\\ConsoleApp2\\Task1.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\Projects\\EpamTasks\\Task1\\ConsoleApp2\\Task1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kiryl\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Kiryl\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Kiryl\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\Kiryl\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.32\\microsoft.netcore.app.host.win-x64.3.1.32.nupkg.sha512"
+  ],
   "logs": []
 }

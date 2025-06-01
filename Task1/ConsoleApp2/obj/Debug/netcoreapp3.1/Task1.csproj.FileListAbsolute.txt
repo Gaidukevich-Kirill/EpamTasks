@@ -12,3 +12,17 @@ E:\prg\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\Task1.pdb
 E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.dll
 E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.pdb
 E:\prg\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.genruntimeconfig.cache
+D:\Projects\EpamTasks\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\Task1.exe
+D:\Projects\EpamTasks\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\Task1.deps.json
+D:\Projects\EpamTasks\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\Task1.runtimeconfig.json
+D:\Projects\EpamTasks\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\Task1.runtimeconfig.dev.json
+D:\Projects\EpamTasks\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\Task1.dll
+D:\Projects\EpamTasks\Task1\ConsoleApp2\bin\Debug\netcoreapp3.1\Task1.pdb
+D:\Projects\EpamTasks\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\EpamTasks\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.AssemblyInfoInputs.cache
+D:\Projects\EpamTasks\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.AssemblyInfo.cs
+D:\Projects\EpamTasks\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.csproj.CoreCompileInputs.cache
+D:\Projects\EpamTasks\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.sourcelink.json
+D:\Projects\EpamTasks\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.dll
+D:\Projects\EpamTasks\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.pdb
+D:\Projects\EpamTasks\Task1\ConsoleApp2\obj\Debug\netcoreapp3.1\Task1.genruntimeconfig.cache
